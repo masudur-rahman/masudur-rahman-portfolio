@@ -1,0 +1,22 @@
+services:
+  devportfolio:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "${PORT:-4321}:${PORT:-4321}"
+    environment:
+      - NODE_ENV=production
+      - PORT=${PORT:-4321}
+      - HOST=${HOST:-0.0.0.0}
+      - ALLOWED_HOSTS=${ALLOWED_HOSTS:-localhost,mrahman.xyz}
+    volumes:
+      # Optional: Mount config for development
+      - ./src/config.ts:/app/src/config.ts:ro
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://0.0.0.0:4321"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
