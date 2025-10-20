@@ -190,7 +190,7 @@ export const siteConfig = {
       degree: "Higher Secondary Certificate",
       dateRange: "2011-2013",
       achievements: [
-        "Graduated with 5.00 GPA",
+        "Graduated with 5.00 GPA"
       ],
     },
     {
@@ -199,8 +199,47 @@ export const siteConfig = {
       dateRange: "2006-2011",
       achievements: [
         "Graduated with 5.00 GPA",
-        "Government Scholarship",
+        "SSC Government Scholarship",
+        "Junior School Government Scholarship"
       ]
+    },
+    {
+      school: "Sosthal Shaheb Rampur Govt Primary School, Madaripur",
+      degree: "Primary School Certificate",
+      dateRange: "2001-2005",
+      achievements: [
+        "Primary School Goverment Scholarship"
+      ]
+    }
+  ],
+  accomplishments: [
+    "Certified Kubernetes Administrator - CNCF.",
+    "Rank 27 in ICPC Dhaka Regional Preliminary Contest 2017 (Among 1400+ teams).",
+    "Rank 31 in CUET National Collegiate Programming Contest, 2017.",
+    "Rank 46 in ACM ICPC Dhaka Regional, 2017.",
+    "Participated in ICPC Dhaka Regional Onsite Contest 2018.",
+    "Codeforces: Max Rating: 1702 [ [MASUDUR_RAHMAN](https://codeforces.com/profile/MASUDUR_RAHMAN) ].",
+    "Solved around 1400 programming problems in different online judges."
+  ],
+
+  gallery: [
+    {
+      image: "/images/gallery/cka.png",
+      title: "CKA Certificate",
+      description: "CKA Certificate.",
+      date: "2025-10-18"
+    },
+    {
+      image: "/images/gallery/icpc.jpg",
+      title: "ICPC Onsite Finals",
+      description: "ICPC onsite finals. Our team after the contest.",
+      date: "2018-11-10"
+    },
+    {
+      image: "/images/gallery/ncpc.jpg",
+      title: "CUET NCPC 2017",
+      description: "CUET National Collegiate Programming Contest participation.",
+      date: "2017-07-12"
     }
   ],
 };

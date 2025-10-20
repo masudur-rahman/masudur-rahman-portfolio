@@ -1,0 +1,30 @@
+---
+import { siteConfig } from "../config";
+import { marked } from "marked";
+const feats = siteConfig.accomplishments ?? [];
+const renderMarkdown = (md) => marked.parse(md || "").replace(/<a ([^>]+)>/g, '<a $1 target="_blank" rel="noopener noreferrer">');
+---
+{feats.length > 0 && (
+  <section id="accomplishments" class="p-8 sm:p-12 md:p-16 lg:p-24">
+    <div>
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
+        <div class="lg:col-span-4">
+          <h2 class="text-3xl sm:text-4xl md:text-5xl xl:text-7xl font-bold text-gray-900">
+            Notable Feats
+          </h2>
+          <div class="w-[75px] h-[5px] mt-2 rounded-full" style={`background-color: #1d4ed8`} />
+        </div>
+        <div class="lg:col-span-8">
+          <div class="space-y-6">
+            {feats.map((item) => (
+              <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-4 sm:p-6 flex items-center hover:shadow-md transition-shadow duration-300">
+                <span class="inline-block w-2 h-2 rounded-full bg-blue-400 mr-4 flex-shrink-0"></span>
+                <span class="text-base sm:text-lg text-gray-700 markdown-content" set:html={renderMarkdown(item)}></span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+)}
