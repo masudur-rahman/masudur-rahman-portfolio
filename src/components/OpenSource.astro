@@ -1,0 +1,140 @@
+---
+import { siteConfig } from "../config";
+import { marked } from "marked";
+const hasOpenSourceProjects = siteConfig.openSourceProjects && siteConfig.openSourceProjects.length > 0;
+const renderMarkdown = (md) => marked.parse(md || "").replace(/<a ([^>]+)>/g, '<a $1 target="_blank" rel="noopener noreferrer">');
+---
+
+{
+  hasOpenSourceProjects && (
+    <section id="open-source" class="p-8 sm:p-12 md:p-16 lg:p-24 bg-gray-50">
+      <div>
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
+          <div class="lg:col-span-4">
+            <h2 class="text-3xl sm:text-4xl md:text-5xl xl:text-7xl font-bold text-gray-900">
+              Open Source
+            </h2>
+            <div
+              class="w-[75px] h-[5px] mt-2 rounded-full"
+              style={`background-color: ${siteConfig.accentColor}`}
+            />
+            <p class="text-lg text-gray-600 mt-4">
+              Contributing to the open source community and building tools that help developers worldwide.
+            </p>
+          </div>
+
+          <div class="lg:col-span-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {siteConfig.openSourceProjects.map((project, index) => {
+                const Component = project.link ? "a" : "div";
+                const linkProps = project.link
+                  ? {
+                      href: project.link,
+                      target: "_blank",
+                      rel: "noopener noreferrer",
+                    }
+                  : {};
+
+                return (
+                  <div class="group relative">
+                    <Component
+                      {...linkProps}
+                      class={`block relative p-6 bg-white rounded-xl border border-gray-200 transition-all duration-300 ${
+                        project.link
+                          ? "hover:shadow-lg hover:border-gray-300 hover:-translate-y-1"
+                          : ""
+                      }`}
+                    >
+                      {project.link && (
+                        <div class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center bg-gray-900 rounded-full text-white transition-all duration-300 group-hover:bg-gray-700">
+                          <svg
+                            class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="2"
+                              d="M7 17L17 7M17 7H7M17 7V17"
+                            />
+                          </svg>
+                        </div>
+                      )}
+
+                      <div class="space-y-3">
+                        <div class="flex items-center gap-2">
+                          <span
+                            class="text-sm font-mono"
+                            style={{ color: siteConfig.accentColor }}
+                          >
+                            0{index + 1}
+                          </span>
+                          {project.role && (
+                            <span class="text-xs px-2 py-1 bg-green-100 text-green-800 rounded-full font-medium">
+                              {project.role}
+                            </span>
+                          )}
+                        </div>
+
+                        <h3 class="text-lg font-bold text-gray-900 group-hover:text-gray-700 transition-colors markdown-content" set:html={renderMarkdown(project.name)}></h3>
+
+                        <div class="text-sm text-gray-600 leading-relaxed markdown-content" set:html={renderMarkdown(project.description)}></div>
+
+                        {project.skills && project.skills.length > 0 && (
+                          <div class="flex flex-wrap gap-1 pt-2">
+                            {project.skills.map((skill) => (
+                              <span
+                                class={`px-2 py-1 bg-gray-100 text-gray-700 rounded text-xs font-medium transition-all duration-300 ${
+                                  project.link ? "group-hover:bg-gray-200" : ""
+                                }`}
+                              >
+                                {skill}
+                              </span>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    </Component>
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* GitHub Stats Section */}
+            <div class="mt-12 p-6 bg-white rounded-xl border border-gray-200">
+              <h3 class="text-xl font-bold text-gray-900 mb-4">Open Source Impact</h3>
+              <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                <div>
+                  <div class="text-2xl font-bold" style={{ color: siteConfig.accentColor }}>
+                    {siteConfig.openSourceProjects.length}+
+                  </div>
+                  <div class="text-sm text-gray-600">Projects</div>
+                </div>
+                <div>
+                  <div class="text-2xl font-bold" style={{ color: siteConfig.accentColor }}>
+                    Multiple
+                  </div>
+                  <div class="text-sm text-gray-600">Repositories</div>
+                </div>
+                <div>
+                  <div class="text-2xl font-bold" style={{ color: siteConfig.accentColor }}>
+                    Community
+                  </div>
+                  <div class="text-sm text-gray-600">Contributions</div>
+                </div>
+                <div>
+                  <div class="text-2xl font-bold" style={{ color: siteConfig.accentColor }}>
+                    Active
+                  </div>
+                  <div class="text-sm text-gray-600">Maintainer</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}

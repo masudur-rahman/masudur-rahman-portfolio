@@ -12,20 +12,33 @@ export const siteConfig = {
   aboutMe:
     "A professional Software Engineer with 5 years of experience in Back-End Development in Go and almost 2 years of experience in DevOps Engineering. A competitive programmer with great problem-solving skills. I am passionate about learning new things, and am highly adaptive to new technologies.",
   skills: ["Go", "Bash", "C++", "Kubernetes", "Docker", "Prometheus", "Grafana", "Helm", "Ansible", "Terraform", "Postgres", "Nats", "GH Actions", "FluxCD"],
+  // Project filtering configuration (excluding open source - now has separate section)
+  projectFilters: [
+    { name: "All", filter: "all" },
+    { name: "Professional", filter: "professional" },
+    { name: "Academic", filter: "academic" },
+    { name: "Hobby", filter: "hobby" }
+  ],
+
   projects: [
+    // Original order as specified
     {
       name: "Expense Tracker Bot",
       description:
         "A Telegram bot built with Go to manage and track personal finances. It allows users to record expenses, income, transfers, and loans directly from chat. The bot supports multi-account management (cash, bank, etc.) and generates categorized summaries and PDF reports. Designed for self-hosting with a simple, automation-friendly workflow.",
       link: "https://github.com/masudur-rahman/expense-tracker-bot",
-      skills: ["Go", "Telegram API"]
+      skills: ["Go", "Telegram API"],
+      category: "hobby",
+      role: "Owner"
     },
     {
       name: "Pawsitively Purrfect",
       description:
-        "`Pawsitively Purrfect` is a web application for Pet Adoption, written in Go, GraphQL. The project follows the Service-Repository-Data pattern for clean architecture. The Repository layer communicates with Data layer through a gRPC server.",
+        "Pawsitively Purrfect is a web application for Pet Adoption, written in Go, GraphQL. The project follows the Service-Repository-Data pattern for clean architecture. The Repository layer communicates with Data layer through a gRPC server.",
       link: "https://github.com/masudur-rahman/pawsitively-purrfect",
       skills: ["Go", "GraphQL"],
+      category: "hobby",
+      role: "Owner"
     },
     {
       name: "ByteBuilders by AppsCode",
@@ -33,6 +46,8 @@ export const siteConfig = {
         "ByteBuilders is the Back-End server for a Kubernetes Dashboard. Deploy, manage, upgrade Kubernetes on any cloud and automate deployment, scaling, and management of containerized applications. Contributed in implementing the server. Integrated Stripe payment apis, implemented background task manager via NATS Messaging for long running apis, implemented wizard for imiporting Kubernetes clusters from various cloud providers, etc.",
       link: "https://appscode.com/console",
       skills: ["Go", "NATS"],
+      category: "professional",
+      role: "Lead Software Engineer"
     },
     {
       name: "Grafana Operator by AppsCode",
@@ -40,6 +55,8 @@ export const siteConfig = {
         "Grafana Operator is a Kubernetes Controller for Provisioning and Managing Grafana Dashboards and Datasources. It's based on a grafana sdk. Contributed in adding the initial version of the operator. Also added E2E tests using Gingkgo.",
       link: "https://github.com/open-viz/grafana-tools",
       skills: ["Go"],
+      category: "professional",
+      role: "Contributor"
     },
     {
       name: "Pharmer by AppsCode",
@@ -47,6 +64,8 @@ export const siteConfig = {
         "Pharmer is a Kubernetes Cluster Manager using Kubeadm & Cluster API. Contributed in adding support for creating Kubernetes Cluster in Google Compute Engine using Cluster API.",
       link: "https://github.com/pharmer/pharmer",
       skills: ["Go"],
+      category: "professional",
+      role: "Contributor"
     },
     {
       name: "Logger by AppsCode",
@@ -54,6 +73,56 @@ export const siteConfig = {
         "nats-logr is a logr implementation using NATS. union-logr is a logr implementation that aggregates multiple loggers. Implemented these loggers which impacted a great deal in Pharmer project.",
       link: "https://github.com/gomodules/nats-logr",
       skills: ["Go", "NATS"],
+      category: "professional",
+      role: "Contributor"
+    },
+
+    // Additional projects moved to the end
+    {
+      name: "Facial Expression Recognition Using CNN and SVM Approach",
+      description:
+        "Developed a program to recognize Facial Expression from a static image. CNN and SVMs used to train and classify facial expressions into various categories. Python, TensorFlow, SVM, OpenCV used for image processing and machine learning.",
+      link: "https://github.com/masudur-rahman/FER-Final-Report",
+      skills: ["Python", "TensorFlow", "SVM", "OpenCV", "Machine Learning", "Image Processing"],
+      category: "academic",
+      role: "Owner",
+      timeline: "Jan 2018 - Oct 2018"
+    },
+  ],
+
+  // Open Source Projects (separate section)
+  openSourceProjects: [
+    {
+      name: "Cluster API Provider GCP",
+      description:
+        "Fixed some issues regarding k8s version, Node role and default disk size in the Kubernetes Cluster API Provider for Google Cloud Platform.",
+      link: "https://github.com/kubernetes-sigs/cluster-api-provider-gcp/pulls?q=is:pr+is:merged+author:masudur-rahman",
+      skills: ["Go", "Kubernetes", "GCP"],
+      role: "Contributor"
+    },
+    {
+      name: "Gitea",
+      description:
+        "Refactored naming of users' avatars in the Gitea Git hosting service.",
+      link: "https://github.com/go-gitea/gitea/pull/8547",
+      skills: ["Go", "Backend"],
+      role: "Contributor"
+    },
+    {
+      name: "Grafana SDK",
+      description:
+        "Refactored some existing APIs and added some new ones in the Grafana SDK for Go.",
+      link: "https://github.com/grafana-tools/sdk/pulls?q=is:pr+is:merged+author:masudur-rahman",
+      skills: ["Go", "Backend", "Grafana"],
+      role: "Contributor"
+    },
+    {
+      name: "NATS Helm Chart",
+      description:
+        "Fixed some Websocket related issues in NATS helm chart for Kubernetes deployments.",
+      link: "https://github.com/nats-io/k8s/pull/315",
+      skills: ["Kubernetes", "NATS", "Helm"],
+      role: "Contributor"
     },
   ],
   experience: [

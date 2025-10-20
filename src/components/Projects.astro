@@ -1,6 +1,9 @@
 ---
 import { siteConfig } from "../config";
+import { marked } from "marked";
 const hasProjects = siteConfig.projects && siteConfig.projects.length > 0;
+const hasFilters = siteConfig.projectFilters && siteConfig.projectFilters.length > 0;
+const renderMarkdown = (md) => marked.parse(md || "").replace(/<a ([^>]+)>/g, '<a $1 target="_blank" rel="noopener noreferrer">');
 ---
 
 {
@@ -19,7 +22,28 @@ const hasProjects = siteConfig.projects && siteConfig.projects.length > 0;
           </div>
 
           <div class="lg:col-span-8">
-            <div class="space-y-8">
+            {/* Filter Buttons */}
+            {hasFilters && (
+              <div class="mb-8">
+                <div class="flex flex-wrap gap-2 sm:gap-3">
+                  {siteConfig.projectFilters.map((filter) => (
+                    <button
+                      class={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
+                        filter.filter === "all"
+                          ? "bg-gray-900 text-white"
+                          : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                      }`}
+                      data-filter={filter.filter}
+                    >
+                      <span class="markdown-content" set:html={renderMarkdown(filter.name)}></span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Projects Grid */}
+            <div class="space-y-8" id="projects-container">
               {siteConfig.projects.map((project, index) => {
                 const Component = project.link ? "a" : "div";
                 const linkProps = project.link
@@ -31,7 +55,10 @@ const hasProjects = siteConfig.projects && siteConfig.projects.length > 0;
                   : {};
 
                 return (
-                  <div class="group relative">
+                  <div 
+                    class="project-item group relative" 
+                    data-category={project.category || "all"}
+                  >
                     <Component
                       {...linkProps}
                       class={`block relative p-4 sm:p-6 md:p-8 bg-gray-50 rounded-xl sm:rounded-2xl border border-gray-200 transition-all duration-300 ${
@@ -60,22 +87,34 @@ const hasProjects = siteConfig.projects && siteConfig.projects.length > 0;
 
                       <div class="space-y-4">
                         <div>
-                          <span
-                            class="text-sm font-mono"
-                            style={{ color: siteConfig.accentColor }}
-                          >
-                            0{index + 1}
-                          </span>
-                          <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mt-1">
-                            {project.name}
-                          </h3>
+                          <div class="flex items-center gap-2 mb-2">
+                            <span
+                              class="text-sm font-mono"
+                              style={{ color: siteConfig.accentColor }}
+                            >
+                              0{index + 1}
+                            </span>
+                            {project.role && (
+                              <span class="text-xs px-2 py-1 bg-blue-100 text-blue-800 rounded-full font-medium">
+                                {project.role}
+                              </span>
+                            )}
+                            {project.category && (
+                              <span class="text-xs px-2 py-1 bg-gray-200 text-gray-700 rounded-full font-medium">
+                                {project.category.replace('-', ' ')}
+                              </span>
+                            )}
+                          </div>
+                          <h3 class="text-xl sm:text-2xl font-bold text-gray-900 markdown-content" set:html={renderMarkdown(project.name)}></h3>
+                          {project.timeline && (
+                            <p class="text-sm text-gray-500 mt-1 markdown-content" set:html={renderMarkdown(project.timeline)}></p>
+                          )}
                         </div>
 
-                        <p
-                          class={`text-base sm:text-lg text-gray-600 leading-relaxed ${project.link ? "pr-12 sm:pr-14 md:pr-16" : ""}`}
-                        >
-                          {project.description}
-                        </p>
+                        <div
+                          class={`text-base sm:text-lg text-gray-600 leading-relaxed markdown-content ${project.link ? "pr-12 sm:pr-14 md:pr-16" : ""}`}
+                          set:html={renderMarkdown(project.description)}
+                        ></div>
 
                         {project.skills && project.skills.length > 0 && (
                           <div class="flex flex-wrap gap-1.5 sm:gap-2 pt-2">
@@ -99,6 +138,55 @@ const hasProjects = siteConfig.projects && siteConfig.projects.length > 0;
           </div>
         </div>
       </div>
+
+      {/* JavaScript for filtering */}
+      <script>
+        function filterProjects(filter) {
+          const projects = document.querySelectorAll('.project-item');
+          const buttons = document.querySelectorAll('[data-filter]');
+
+          // Update button states
+          buttons.forEach(button => {
+            if (button.dataset.filter === filter) {
+              button.className = 'px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 bg-gray-900 text-white';
+            } else {
+              button.className = 'px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 bg-gray-100 text-gray-700 hover:bg-gray-200';
+            }
+          });
+
+          // Filter projects
+          projects.forEach(project => {
+            const category = project.dataset.category;
+            if (filter === 'all' || category === filter) {
+              project.style.display = 'block';
+              project.style.animation = 'fadeIn 0.3s ease-in-out';
+            } else {
+              project.style.display = 'none';
+            }
+          });
+        }
+
+        // Add CSS animation
+        const style = document.createElement('style');
+        style.textContent = `
+          @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+          }
+        `;
+        document.head.appendChild(style);
+
+        // Add event listeners when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+          const filterButtons = document.querySelectorAll('[data-filter]');
+          filterButtons.forEach(button => {
+            button.addEventListener('click', function() {
+              const filter = this.dataset.filter;
+              filterProjects(filter);
+            });
+          });
+        });
+      </script>
     </section>
   )
 }
