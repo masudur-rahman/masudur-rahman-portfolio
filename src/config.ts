@@ -125,9 +125,10 @@ export const siteConfig = {
       role: "Contributor"
     },
   ],
+
   experience: [
     {
-      company: "Pathao Ltd, Fintech Engineering",
+      company: "[Pathao Ltd](https://pathao.com), Fintech Engineering",
       title: "Senior Software Engineer (DevOps)",
       dateRange: "Jan 2024 - Present",
       bullets: [
@@ -138,7 +139,7 @@ export const siteConfig = {
       ],
     },
     {
-      company: "AppsCode Inc",
+      company: "[AppsCode Inc](https://appscode.com)",
       title: "Lead Software Engineer",
       dateRange: "Jun 2023 - Dec 2023",
       bullets: [
@@ -150,13 +151,13 @@ export const siteConfig = {
       ],
     },
     {
-      company: "AppsCode Inc",
+      company: "[AppsCode Inc](https://appscode.com)",
       title: "Senior Software Engineer",
       dateRange: "Jan 2021 - Dec 2022",
       bullets: [
         "Designed and Maintained ByteBuilders API Server. Tools used: Go, macaron web framework, helm, k8s.",
         "Added a support for importing Kubernetes Cluster [Managed, Public & Air Gaped] to ByteBuilders Dashboard.",
-        "Implemented A Background Task Manager for long running tasks, log/exec features for Kubernetes pods/services and Invoice generation from users’ usage data with the help of NATS. Tools used: Go, k8s, NATS",
+        "Implemented A Background Task Manager for long running tasks, log/exec features for Kubernetes pods/services and Invoice generation from users' usage data with the help of NATS. Tools used: Go, k8s, NATS",
         "Developed a Prometheus Proxy Server for Grafana datasource.",
         "Added CI/CD pipelines for projects in Github Actions.",
         "Involved in Deployment & Maintenance of ByteBuilders Production Server.",
@@ -168,7 +169,7 @@ export const siteConfig = {
       title: "Software Engineer",
       dateRange: "Nov 2018 - Dec 2020",
       bullets: [
-        "Implemented a feature in Pharmer project to support Kubernetes Cluster Provisioning in Google Compute Engine using Cluster API. Tools used: Go, Shell scripts.",
+        "Implemented a feature in [Pharmer](https://github.com/pharmer/pharmer) project to support Kubernetes Cluster Provisioning in Google Compute Engine using Cluster API. Tools used: Go, Shell scripts.",
         "Contributed in ByteBuilders API Server integrating various features.",
         "Integrated Stripe Payment APIs including product, plan, payment and invoice apis.",
         "Developed a Kubernetes Controller for Provisioning and Managing Grafana Dashboards and Datasources.",
@@ -177,7 +178,7 @@ export const siteConfig = {
   ],
   education: [
     {
-      school: "Chittagong University of Engineering and Technology",
+      school: "[Chittagong University of Engineering and Technology, Chittagong](https://cuet.ac.bd)",
       degree: "BSc in Computer Science & Engineering",
       dateRange: "2014 - 2018",
       achievements: [
@@ -186,7 +187,7 @@ export const siteConfig = {
       ],
     },
     {
-      school: "Notre Dame College, Dhaka",
+      school: "[Notre Dame College, Dhaka](https://ndc.edu.bd)",
       degree: "Higher Secondary Certificate",
       dateRange: "2011-2013",
       achievements: [

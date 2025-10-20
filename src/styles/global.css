@@ -3,3 +3,18 @@
 body {
   font-family: 'IBM Plex Mono', monospace;
 }
+
+.markdown-content a,
+.markdown-content p > a,
+.markdown-content span > a {
+  color: #2563eb !important;
+  text-decoration: underline !important;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.markdown-content a:hover,
+.markdown-content p > a:hover,
+.markdown-content span > a:hover {
+  color: #1d4ed8 !important;
+  text-decoration: underline !important;
+}
