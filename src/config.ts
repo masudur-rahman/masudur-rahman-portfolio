@@ -11,7 +11,7 @@ export const siteConfig = {
   },
   aboutMe:
     "A professional Software Engineer with 5 years of experience in Back-End Development in Go and almost 2 years of experience in DevOps Engineering. A competitive programmer with great problem-solving skills. I am passionate about learning new things, and am highly adaptive to new technologies.",
-  skills: ["Go", "Bash", "C++", "Kubernetes", "Docker", "Prometheus", "Grafana", "Helm", "Ansible", "Terraform", "Postgres", "Nats", "GH Actions", "FluxCD"],
+  skills: ["Go", "Bash", "C++", "Kubernetes", "CKA", "Docker", "Prometheus", "Grafana", "Helm", "Ansible", "Terraform", "Postgres", "Nats", "GH Actions", "FluxCD"],
   // Project filtering configuration (excluding open source - now has separate section)
   projectFilters: [
     { name: "All", filter: "all" },
@@ -214,7 +214,7 @@ export const siteConfig = {
     }
   ],
   accomplishments: [
-    "Certified Kubernetes Administrator - CNCF.",
+    "[Certified Kubernetes Administrator](https://www.credly.com/badges/351fbffa-af1e-4803-8e60-8fd52c617606/public_url) - CNCF.",
     "Rank 27 in ICPC Dhaka Regional Preliminary Contest 2017 (Among 1400+ teams).",
     "Rank 31 in CUET National Collegiate Programming Contest, 2017.",
     "Rank 46 in ACM ICPC Dhaka Regional, 2017.",
