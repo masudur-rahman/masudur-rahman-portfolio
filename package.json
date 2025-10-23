@@ -1,5 +1,5 @@
 {
-  "name": "devportfolio",
+  "name": "masud-portfolio",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -7,8 +7,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "docker:build": "docker build -t devportfolio .",
-    "docker:run": "docker run -p 4321:4321 --env-file .env devportfolio",
+    "docker:build": "docker build -t masud-portfolio .",
+    "docker:run": "docker run -p 4321:4321 --env-file .env masud-portfolio",
     "docker:up": "docker compose up -d",
     "docker:down": "docker compose down",
     "docker:logs": "docker compose logs -f",
