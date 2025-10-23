@@ -49,6 +49,10 @@ USER astro
 # Expose port (default 4321, configurable via environment)
 EXPOSE ${PORT:-4321}
 
+# Health check
+HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
+  CMD wget --quiet --tries=1 --spider http://localhost:${PORT:-4321} || exit 1
+
 # Set environment variables with defaults
 ENV PORT=${PORT:-4321}
 ENV HOST=${HOST:-0.0.0.0}
