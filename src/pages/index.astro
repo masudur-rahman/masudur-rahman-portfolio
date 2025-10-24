@@ -1,14 +1,15 @@
 ---
-import Header from "../components/Header.astro";
-import Hero from "../components/Hero.astro";
-import About from "../components/About.astro";
-import Projects from "../components/Projects.astro";
-import OpenSource from "../components/OpenSource.astro";
-import Experience from "../components/Experience.astro";
-import Education from "../components/Education.astro";
-import Achievements from "../components/Achievements.astro";
-import Gallery from "../components/Gallery.astro";
-import Footer from "../components/Footer.astro";
+import Header from "../components/ui/Header.astro";
+import Hero from "../components/ui/Hero.astro";
+import About from "../components/ui/About.astro";
+import Projects from "../components/ui/Projects.astro";
+import OpenSource from "../components/ui/OpenSource.astro";
+import Experience from "../components/ui/Experience.astro";
+import Education from "../components/ui/Education.astro";
+import Achievements from "../components/ui/Achievements.astro";
+import Gallery from "../components/ui/Gallery.astro";
+import Footer from "../components/ui/Footer.astro";
+import Hr from "../components/ui/Hr.astro";
 import { siteConfig } from "../config";
 import "../styles/global.css";
 ---
@@ -45,16 +46,23 @@ import "../styles/global.css";
   </head>
   <body>
     <Header />
-    <section>
+    <main>
       <Hero />
+      <Hr />
       <About />
+      <Hr />
       <Experience />
+      <Hr />
       <Projects />
+      <Hr />
       <OpenSource />
+      <Hr />
       <Education />
+      <Hr />
       <Achievements />
+      <Hr />
       <Gallery />
-    </section>
+    </main>
     <Footer />
   </body>
 </html>

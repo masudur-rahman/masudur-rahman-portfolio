@@ -1,23 +1,22 @@
 ---
-import { siteConfig } from "../config";
-import { marked } from "marked";
+import { siteConfig } from "../../config";
+import { renderMarkdown } from "../../utils";
+import Icon from "../Icon.astro";
 const hasProjects = siteConfig.projects && siteConfig.projects.length > 0;
 const hasFilters = siteConfig.projectFilters && siteConfig.projectFilters.length > 0;
-const renderMarkdown = (md) => marked.parse(md || "").replace(/<a ([^>]+)>/g, '<a $1 target="_blank" rel="noopener noreferrer">');
 ---
 
 {
   hasProjects && (
-    <section id="projects" class="p-8 sm:p-12 md:p-16 lg:p-24">
+    <section id="projects" class="p-8 sm:p-12 md:p-16 lg:p-24 bg-bg-light dark:bg-bg-dark" aria-label="Projects" role="region">
       <div>
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
           <div class="lg:col-span-4">
-            <h2 class="text-3xl sm:text-4xl md:text-5xl xl:text-7xl font-bold text-gray-900">
+            <h2 class="text-3xl sm:text-4xl md:text-5xl xl:text-7xl font-bold text-[var(--color-text-section-title)]">
               Projects
             </h2>
             <div
-              class="w-[75px] h-[5px] mt-2 rounded-full"
-              style={`background-color: ${siteConfig.accentColor}`}
+              class="w-[75px] h-[5px] mt-2 rounded-full accent-bg-color"
             />
           </div>
 
@@ -31,7 +30,7 @@ const renderMarkdown = (md) => marked.parse(md || "").replace(/<a ([^>]+)>/g, '<
                       class={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
                         filter.filter === "all"
                           ? "bg-gray-900 text-white"
-                          : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                          : "bg-[var(--color-bg-tag)] text-[var(--color-text-tag)] hover:bg-gray-200"
                       }`}
                       data-filter={filter.filter}
                     >
@@ -61,9 +60,9 @@ const renderMarkdown = (md) => marked.parse(md || "").replace(/<a ([^>]+)>/g, '<
                   >
                     <Component
                       {...linkProps}
-                      class={`block relative p-4 sm:p-6 md:p-8 bg-gray-50 rounded-xl sm:rounded-2xl border border-gray-200 transition-all duration-300 ${
+                      class={`block relative p-4 sm:p-6 md:p-8 bg-bg-light dark:bg-bg-dark rounded-xl sm:rounded-2xl border border-gray-200 dark:border-gray-700 transition-all duration-300 ${
                         project.link
-                          ? "hover:bg-white hover:shadow-xl hover:border-gray-300 hover:-translate-y-1"
+                          ? "hover:shadow-lg hover:-translate-y-1"
                           : ""
                       }`}
                     >
@@ -89,30 +88,29 @@ const renderMarkdown = (md) => marked.parse(md || "").replace(/<a ([^>]+)>/g, '<
                         <div>
                           <div class="flex items-center gap-2 mb-2">
                             <span
-                              class="text-sm font-mono"
-                              style={{ color: siteConfig.accentColor }}
+                              class="text-sm font-mono accent-text-color"
                             >
                               0{index + 1}
                             </span>
                             {project.role && (
-                              <span class="text-xs px-2 py-1 bg-blue-100 text-blue-800 rounded-full font-medium">
+                              <span class="text-xs px-2 py-1 bg-[var(--color-bg-role)] text-[var(--color-text-role)] rounded-full font-medium">
                                 {project.role}
                               </span>
                             )}
                             {project.category && (
-                              <span class="text-xs px-2 py-1 bg-gray-200 text-gray-700 rounded-full font-medium">
+                              <span class="text-xs px-2 py-1 bg-[var(--color-bg-tag)] text-[var(--color-text-tag)] rounded-full font-medium">
                                 {project.category.replace('-', ' ')}
                               </span>
                             )}
                           </div>
-                          <h3 class="text-xl sm:text-2xl font-bold text-gray-900 markdown-content" set:html={renderMarkdown(project.name)}></h3>
+                          <h3 class="text-xl sm:text-2xl font-bold text-[var(--color-text-card-title)] markdown-content" set:html={renderMarkdown(project.name)}></h3>
                           {project.timeline && (
-                            <p class="text-sm text-gray-500 mt-1 markdown-content" set:html={renderMarkdown(project.timeline)}></p>
+                            <p class="text-sm text-[var(--color-text-muted)] mt-1 markdown-content" set:html={renderMarkdown(project.timeline)}></p>
                           )}
                         </div>
 
                         <div
-                          class={`text-base sm:text-lg text-gray-600 leading-relaxed markdown-content ${project.link ? "pr-12 sm:pr-14 md:pr-16" : ""}`}
+                          class={`text-base sm:text-lg text-[var(--color-text-body)] leading-relaxed markdown-content ${project.link ? "pr-12 sm:pr-14 md:pr-16" : ""}`}
                           set:html={renderMarkdown(project.description)}
                         ></div>
 
@@ -120,8 +118,8 @@ const renderMarkdown = (md) => marked.parse(md || "").replace(/<a ([^>]+)>/g, '<
                           <div class="flex flex-wrap gap-1.5 sm:gap-2 pt-2">
                             {project.skills.map((skill) => (
                               <span
-                                class={`px-2.5 sm:px-3 py-1 sm:py-1.5 bg-gray-900 text-white rounded-md sm:rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 ${
-                                  project.link ? "group-hover:bg-gray-800" : ""
+                                class={`px-2.5 sm:px-3 py-1 sm:py-1.5 bg-[var(--color-bg-tag)] text-[var(--color-text-tag)] rounded-md sm:rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 ${
+                                  project.link ? "group-hover:bg-gray-200 dark:group-hover:bg-gray-700" : ""
                                 }`}
                               >
                                 {skill}
@@ -140,53 +138,16 @@ const renderMarkdown = (md) => marked.parse(md || "").replace(/<a ([^>]+)>/g, '<
       </div>
 
       {/* JavaScript for filtering */}
-      <script>
-        function filterProjects(filter) {
-          const projects = document.querySelectorAll('.project-item');
-          const buttons = document.querySelectorAll('[data-filter]');
-
-          // Update button states
-          buttons.forEach(button => {
-            if (button.dataset.filter === filter) {
-              button.className = 'px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 bg-gray-900 text-white';
-            } else {
-              button.className = 'px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 bg-gray-100 text-gray-700 hover:bg-gray-200';
-            }
-          });
-
-          // Filter projects
-          projects.forEach(project => {
-            const category = project.dataset.category;
-            if (filter === 'all' || category === filter) {
-              project.style.display = 'block';
-              project.style.animation = 'fadeIn 0.3s ease-in-out';
-            } else {
-              project.style.display = 'none';
-            }
-          });
-        }
-
-        // Add CSS animation
-        const style = document.createElement('style');
-        style.textContent = `
-          @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-          }
-        `;
-        document.head.appendChild(style);
-
-        // Add event listeners when DOM is loaded
-        document.addEventListener('DOMContentLoaded', function() {
-          const filterButtons = document.querySelectorAll('[data-filter]');
-          filterButtons.forEach(button => {
-            button.addEventListener('click', function() {
-              const filter = this.dataset.filter;
-              filterProjects(filter);
-            });
-          });
-        });
-      </script>
+      <script src="../../scripts/projects.js"></script>
     </section>
   )
 }
+
+<style define:vars={{ accentColor: siteConfig.accentColor }}>
+  .accent-bg-color {
+    background-color: var(--accentColor);
+  }
+  .accent-text-color {
+    color: var(--accentColor);
+  }
+</style>

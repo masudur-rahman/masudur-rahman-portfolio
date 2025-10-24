@@ -1,23 +1,45 @@
+export type URL = string;
+export type ImagePath = string;
+
+export enum ProjectCategory {
+  All = "all",
+  Professional = "professional",
+  Academic = "academic",
+  Hobby = "hobby",
+}
+
 export const siteConfig = {
   name: "Masudur Rahman",
   title: "Senior Software Engineer, Pathao Ltd (Fintech Engineering)",
   description: "Portfolio website of Masudur Rahman",
   accentColor: "#1d4ed8",
-  social: {
-    email: "masudjuly02@gmail.com",
-    linkedin: "https://linkedin.com/in/masudur-rahman",
-    twitter: "https://x.com/_masud_rahman_",
-    github: "https://github.com/masudur-rahman",
-  },
+  social: [
+    {
+      name: "Email",
+      url: "mailto:masudjuly02@gmail.com",
+    },
+    {
+      name: "LinkedIn",
+      url: "https://linkedin.com/in/masudur-rahman",
+    },
+    {
+      name: "Twitter",
+      url: "https://x.com/_masud_rahman_",
+    },
+    {
+      name: "GitHub",
+      url: "https://github.com/masudur-rahman",
+    },
+  ],
   aboutMe:
     "A professional Software Engineer with 5 years of experience in Back-End Development in Go and almost 2 years of experience in DevOps Engineering. A competitive programmer with great problem-solving skills. I am passionate about learning new things, and am highly adaptive to new technologies.",
   skills: ["Go", "Bash", "C++", "Kubernetes", "CKA", "Docker", "Prometheus", "Grafana", "Helm", "Ansible", "Terraform", "Postgres", "Nats", "GH Actions", "FluxCD"],
   // Project filtering configuration (excluding open source - now has separate section)
   projectFilters: [
-    { name: "All", filter: "all" },
-    { name: "Professional", filter: "professional" },
-    { name: "Academic", filter: "academic" },
-    { name: "Hobby", filter: "hobby" }
+    { name: "All", filter: ProjectCategory.All },
+    { name: "Professional", filter: ProjectCategory.Professional },
+    { name: "Academic", filter: ProjectCategory.Academic },
+    { name: "Hobby", filter: ProjectCategory.Hobby },
   ],
 
   projects: [
@@ -26,55 +48,55 @@ export const siteConfig = {
       name: "Expense Tracker Bot",
       description:
         "A Telegram bot built with Go to manage and track personal finances. It allows users to record expenses, income, transfers, and loans directly from chat. The bot supports multi-account management (cash, bank, etc.) and generates categorized summaries and PDF reports. Designed for self-hosting with a simple, automation-friendly workflow.",
-      link: "https://github.com/masudur-rahman/expense-tracker-bot",
+      link: "https://github.com/masudur-rahman/expense-tracker-bot" as URL,
       skills: ["Go", "Telegram API"],
-      category: "hobby",
-      role: "Owner"
+      category: ProjectCategory.Hobby,
+      role: "Owner",
     },
     {
       name: "Pawsitively Purrfect",
       description:
         "Pawsitively Purrfect is a web application for Pet Adoption, written in Go, GraphQL. The project follows the Service-Repository-Data pattern for clean architecture. The Repository layer communicates with Data layer through a gRPC server.",
-      link: "https://github.com/masudur-rahman/pawsitively-purrfect",
+      link: "https://github.com/masudur-rahman/pawsitively-purrfect" as URL,
       skills: ["Go", "GraphQL"],
-      category: "hobby",
-      role: "Owner"
+      category: ProjectCategory.Hobby,
+      role: "Owner",
     },
     {
       name: "ByteBuilders by AppsCode",
       description:
         "ByteBuilders is the Back-End server for a Kubernetes Dashboard. Deploy, manage, upgrade Kubernetes on any cloud and automate deployment, scaling, and management of containerized applications. Contributed in implementing the server. Integrated Stripe payment apis, implemented background task manager via NATS Messaging for long running apis, implemented wizard for imiporting Kubernetes clusters from various cloud providers, etc.",
-      link: "https://appscode.com/console",
+      link: "https://appscode.com/console" as URL,
       skills: ["Go", "NATS"],
-      category: "professional",
-      role: "Lead Software Engineer"
+      category: ProjectCategory.Professional,
+      role: "Lead Software Engineer",
     },
     {
       name: "Grafana Operator by AppsCode",
       description:
         "Grafana Operator is a Kubernetes Controller for Provisioning and Managing Grafana Dashboards and Datasources. It's based on a grafana sdk. Contributed in adding the initial version of the operator. Also added E2E tests using Gingkgo.",
-      link: "https://github.com/open-viz/grafana-tools",
+      link: "https://github.com/open-viz/grafana-tools" as URL,
       skills: ["Go"],
-      category: "professional",
-      role: "Contributor"
+      category: ProjectCategory.Professional,
+      role: "Contributor",
     },
     {
       name: "Pharmer by AppsCode",
       description:
         "Pharmer is a Kubernetes Cluster Manager using Kubeadm & Cluster API. Contributed in adding support for creating Kubernetes Cluster in Google Compute Engine using Cluster API.",
-      link: "https://github.com/pharmer/pharmer",
+      link: "https://github.com/pharmer/pharmer" as URL,
       skills: ["Go"],
-      category: "professional",
-      role: "Contributor"
+      category: ProjectCategory.Professional,
+      role: "Contributor",
     },
     {
       name: "Logger by AppsCode",
       description:
         "nats-logr is a logr implementation using NATS. union-logr is a logr implementation that aggregates multiple loggers. Implemented these loggers which impacted a great deal in Pharmer project.",
-      link: "https://github.com/gomodules/nats-logr",
+      link: "https://github.com/gomodules/nats-logr" as URL,
       skills: ["Go", "NATS"],
-      category: "professional",
-      role: "Contributor"
+      category: ProjectCategory.Professional,
+      role: "Contributor",
     },
 
     // Additional projects moved to the end
@@ -82,11 +104,11 @@ export const siteConfig = {
       name: "Facial Expression Recognition Using CNN and SVM Approach",
       description:
         "Developed a program to recognize Facial Expression from a static image. CNN and SVMs used to train and classify facial expressions into various categories. Python, TensorFlow, SVM, OpenCV used for image processing and machine learning.",
-      link: "https://github.com/masudur-rahman/FER-Final-Report",
+      link: "https://github.com/masudur-rahman/FER-Final-Report" as URL,
       skills: ["Python", "TensorFlow", "SVM", "OpenCV", "Machine Learning", "Image Processing"],
-      category: "academic",
+      category: ProjectCategory.Academic,
       role: "Owner",
-      timeline: "Jan 2018 - Oct 2018"
+      timeline: "Jan 2018 - Oct 2018",
     },
   ],
 
@@ -213,7 +235,7 @@ export const siteConfig = {
       ]
     }
   ],
-  accomplishments: [
+  achievements: [
     "[Certified Kubernetes Administrator](https://www.credly.com/badges/351fbffa-af1e-4803-8e60-8fd52c617606/public_url) - CNCF.",
     "Rank 27 in ICPC Dhaka Regional Preliminary Contest 2017 (Among 1400+ teams).",
     "Rank 31 in CUET National Collegiate Programming Contest, 2017.",

@@ -1,24 +1,23 @@
 ---
-import { siteConfig } from "../config";
-import { marked } from "marked";
+import { siteConfig } from "../../config";
+import { renderMarkdown } from "../../utils";
+import Icon from "../Icon.astro";
 const hasOpenSourceProjects = siteConfig.openSourceProjects && siteConfig.openSourceProjects.length > 0;
-const renderMarkdown = (md) => marked.parse(md || "").replace(/<a ([^>]+)>/g, '<a $1 target="_blank" rel="noopener noreferrer">');
 ---
 
 {
   hasOpenSourceProjects && (
-    <section id="open-source" class="p-8 sm:p-12 md:p-16 lg:p-24 bg-gray-50">
+    <section id="open-source" class="p-8 sm:p-12 md:p-16 lg:p-24 bg-bg-light dark:bg-bg-dark" aria-label="Open Source" role="region">
       <div>
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
           <div class="lg:col-span-4">
-            <h2 class="text-3xl sm:text-4xl md:text-5xl xl:text-7xl font-bold text-gray-900">
+            <h2 class="text-3xl sm:text-4xl md:text-5xl xl:text-7xl font-bold text-[var(--color-text-section-title)]">
               Open Source
             </h2>
             <div
-              class="w-[75px] h-[5px] mt-2 rounded-full"
-              style={`background-color: ${siteConfig.accentColor}`}
+              class="w-[75px] h-[5px] mt-2 rounded-full accent-bg-color"
             />
-            <p class="text-lg text-gray-600 mt-4">
+            <p class="text-lg text-[var(--color-text-body)] mt-4">
               Contributing to the open source community and building tools that help developers worldwide.
             </p>
           </div>
@@ -39,14 +38,14 @@ const renderMarkdown = (md) => marked.parse(md || "").replace(/<a ([^>]+)>/g, '<
                   <div class="group relative">
                     <Component
                       {...linkProps}
-                      class={`block relative p-6 bg-white rounded-xl border border-gray-200 transition-all duration-300 ${
+                      class={`block relative p-6 bg-bg-light dark:bg-bg-dark rounded-xl border border-gray-200 dark:border-gray-700 transition-all duration-300 ${
                         project.link
-                          ? "hover:shadow-lg hover:border-gray-300 hover:-translate-y-1"
+                          ? "hover:shadow-lg hover:border-gray-600 hover:-translate-y-1"
                           : ""
                       }`}
                     >
                       {project.link && (
-                        <div class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center bg-gray-900 rounded-full text-white transition-all duration-300 group-hover:bg-gray-700">
+                        <div class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center bg-gray-900 dark:bg-gray-700 rounded-full text-white transition-all duration-300 group-hover:bg-gray-600">
                           <svg
                             class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                             fill="none"
@@ -66,28 +65,27 @@ const renderMarkdown = (md) => marked.parse(md || "").replace(/<a ([^>]+)>/g, '<
                       <div class="space-y-3">
                         <div class="flex items-center gap-2">
                           <span
-                            class="text-sm font-mono"
-                            style={{ color: siteConfig.accentColor }}
+                            class="text-sm font-mono accent-text-color"
                           >
                             0{index + 1}
                           </span>
                           {project.role && (
-                            <span class="text-xs px-2 py-1 bg-green-100 text-green-800 rounded-full font-medium">
+                            <span class="text-xs px-2 py-1 bg-[var(--color-bg-role)] text-[var(--color-text-role)] rounded-full font-medium">
                               {project.role}
                             </span>
                           )}
                         </div>
 
-                        <h3 class="text-lg font-bold text-gray-900 group-hover:text-gray-700 transition-colors markdown-content" set:html={renderMarkdown(project.name)}></h3>
+                        <h3 class="text-lg font-bold text-[var(--color-text-card-title)] group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors markdown-content" set:html={renderMarkdown(project.name)}></h3>
 
-                        <div class="text-sm text-gray-600 leading-relaxed markdown-content" set:html={renderMarkdown(project.description)}></div>
+                        <div class="text-sm text-[var(--color-text-body)] leading-relaxed markdown-content" set:html={renderMarkdown(project.description)}></div>
 
                         {project.skills && project.skills.length > 0 && (
                           <div class="flex flex-wrap gap-1 pt-2">
                             {project.skills.map((skill) => (
                               <span
-                                class={`px-2 py-1 bg-gray-100 text-gray-700 rounded text-xs font-medium transition-all duration-300 ${
-                                  project.link ? "group-hover:bg-gray-200" : ""
+                                class={`px-2 py-1 bg-[var(--color-bg-tag)] text-[var(--color-text-tag)] rounded text-xs font-medium transition-all duration-300 ${
+                                  project.link ? "group-hover:bg-gray-200 dark:group-hover:bg-gray-600" : ""
                                 }`}
                               >
                                 {skill}
@@ -103,32 +101,32 @@ const renderMarkdown = (md) => marked.parse(md || "").replace(/<a ([^>]+)>/g, '<
             </div>
 
             {/* GitHub Stats Section */}
-            <div class="mt-12 p-6 bg-white rounded-xl border border-gray-200">
-              <h3 class="text-xl font-bold text-gray-900 mb-4">Open Source Impact</h3>
+            <div class="mt-12 p-6 bg-bg-light dark:bg-bg-dark rounded-xl border border-gray-200 dark:border-gray-700">
+              <h3 class="text-xl font-bold text-[var(--color-text-card-title)] mb-4">Open Source Impact</h3>
               <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
                 <div>
-                  <div class="text-2xl font-bold" style={{ color: siteConfig.accentColor }}>
+                  <div class="text-2xl font-bold accent-text-color">
                     {siteConfig.openSourceProjects.length}+
                   </div>
-                  <div class="text-sm text-gray-600">Projects</div>
+                  <div class="text-sm text-[var(--color-text-body)]">Projects</div>
                 </div>
                 <div>
-                  <div class="text-2xl font-bold" style={{ color: siteConfig.accentColor }}>
+                  <div class="text-2xl font-bold accent-text-color">
                     Multiple
                   </div>
-                  <div class="text-sm text-gray-600">Repositories</div>
+                  <div class="text-sm text-[var(--color-text-body)]">Repositories</div>
                 </div>
                 <div>
-                  <div class="text-2xl font-bold" style={{ color: siteConfig.accentColor }}>
+                  <div class="text-2xl font-bold accent-text-color">
                     Community
                   </div>
-                  <div class="text-sm text-gray-600">Contributions</div>
+                  <div class="text-sm text-[var(--color-text-body)]">Contributions</div>
                 </div>
                 <div>
-                  <div class="text-2xl font-bold" style={{ color: siteConfig.accentColor }}>
+                  <div class="text-2xl font-bold accent-text-color">
                     Active
                   </div>
-                  <div class="text-sm text-gray-600">Maintainer</div>
+                  <div class="text-sm text-[var(--color-text-body)]">Maintainer</div>
                 </div>
               </div>
             </div>
@@ -138,3 +136,12 @@ const renderMarkdown = (md) => marked.parse(md || "").replace(/<a ([^>]+)>/g, '<
     </section>
   )
 }
+
+<style define:vars={{ accentColor: siteConfig.accentColor }}>
+  .accent-bg-color {
+    background-color: var(--accentColor);
+  }
+  .accent-text-color {
+    color: var(--accentColor);
+  }
+</style>

@@ -1,0 +1,26 @@
+---
+import { siteConfig } from "../../config";
+import ThemeToggle from "../ThemeToggle.astro";
+
+const hasProjects = siteConfig.projects && siteConfig.projects.length > 0;
+const hasOpenSource = siteConfig.openSourceProjects && siteConfig.openSourceProjects.length > 0;
+const hasExperience = siteConfig.experience && siteConfig.experience.length > 0;
+const hasEducation = siteConfig.education && siteConfig.education.length > 0;
+
+interface Props {
+  isMobile?: boolean;
+}
+
+const { isMobile } = Astro.props;
+
+const linkClasses = isMobile
+  ? "text-[var(--color-text-body)] hover:text-[var(--color-text-section-title)] block px-3 py-2 rounded-md text-base font-medium"
+  : "text-[var(--color-text-body)] hover:text-[var(--color-text-section-title)] transition-colors font-medium px-3 py-2 rounded-md text-sm";
+---
+
+<a href="#about" class={linkClasses}>About</a>
+{hasProjects && <a href="#projects" class={linkClasses}>Projects</a>}
+{hasOpenSource && <a href="#open-source" class={linkClasses}>Open Source</a>}
+{hasExperience && <a href="#experience" class={linkClasses}>Experience</a>}
+{hasEducation && <a href="#education" class={linkClasses}>Education</a>}
+<ThemeToggle />

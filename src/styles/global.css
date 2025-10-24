@@ -1,7 +1,47 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-bg: #ffffff;
+  --color-text: #0f172a;
+  --color-primary: #2563eb;
+  --color-secondary: #1d4ed8;
+
+  /* Text & Tag Color System - Light Mode */
+  --color-text-section-title: #111827; /* gray-900 */
+  --color-text-card-title: #111827; /* gray-900 */
+  --color-text-card-subtitle: #374151; /* gray-700 */
+  --color-text-body: #4b5563; /* gray-600 */
+  --color-text-muted: #6b7280; /* gray-500 */
+  --color-text-tag: #374151; /* gray-700 */
+  --color-bg-tag: #f3f4f6; /* gray-100 */
+  --color-text-role: #1e40af; /* blue-800 */
+  --color-bg-role: #dbeafe; /* blue-100 */
+}
+
+[data-theme="dark"] {
+  --color-bg: #1a1a1a;
+  --color-text: #f0f0f0;
+  --color-primary: #2563eb;
+  --color-secondary: #1d4ed8;
+
+  /* Text & Tag Color System - Dark Mode */
+  --color-text-section-title: #f9fafb; /* gray-100 */
+  --color-text-card-title: #f9fafb; /* gray-100 */
+  --color-text-card-subtitle: #d1d5db; /* gray-300 */
+  --color-text-body: #9ca3af; /* gray-400 */
+  --color-text-muted: #6b7280; /* gray-500 */
+  --color-text-tag: #d1d5db; /* gray-300 */
+  --color-bg-tag: #1f2937; /* gray-800 */
+  --color-text-role: #bfdbfe; /* blue-200 */
+  --color-bg-role: #1e3a8a; /* blue-900 */
+}
 
 body {
   font-family: 'IBM Plex Mono', monospace;
+  background-color: var(--color-bg);
+  color: var(--color-text);
 }
 
 .markdown-content a,
@@ -17,4 +57,16 @@ body {
 .markdown-content span > a:hover {
   color: #1d4ed8 !important;
   text-decoration: underline !important;
+}
+
+[data-theme="dark"] .markdown-content a,
+[data-theme="dark"] .markdown-content p > a,
+[data-theme="dark"] .markdown-content span > a {
+  color: var(--color-primary) !important;
+}
+
+[data-theme="dark"] .markdown-content a:hover,
+[data-theme="dark"] .markdown-content p > a:hover,
+[data-theme="dark"] .markdown-content span > a:hover {
+  color: var(--color-secondary) !important;
 }
