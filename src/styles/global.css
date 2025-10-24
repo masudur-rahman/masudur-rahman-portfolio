@@ -70,3 +70,14 @@ body {
 [data-theme="dark"] .markdown-content span > a:hover {
   color: var(--color-secondary) !important;
 }
+
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.animate-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}

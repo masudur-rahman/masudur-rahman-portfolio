@@ -1,10 +1,12 @@
 // @ts-check
 import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
+import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind()],
+  site: "https://mrahman.xyz",
+  integrations: [tailwind(), sitemap()],
   vite: {
     server: {
       host: process.env.HOST || '0.0.0.0',
