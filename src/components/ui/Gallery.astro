@@ -31,7 +31,7 @@ const gallery = siteConfig.gallery ?? [];
 
     {/* Modals */}
     {gallery.map((item, idx) => (
-      <div id={`gallery-modal-${idx}`} class="gallery-modal hidden fixed inset-0 z-50 flex items-center justify-center bg-black/60" tabindex="-1" data-modal-index={idx}>
+      <div id={`gallery-modal-${idx}`} class="gallery-modal hidden fixed inset-0 z-[100] flex items-center justify-center bg-black/60" tabindex="-1" data-modal-index={idx}>
         <div class="bg-bg-light dark:bg-bg-dark rounded-xl max-w-lg w-full p-4 relative gallery-modal-content">
           <button type="button" class="absolute top-2 right-3 text-2xl text-[var(--color-text-muted)] p-2 hover:text-gray-800 dark:hover:text-gray-200 gallery-close" aria-label="Close">&times;</button>
           <img src={item.image} alt={item.title} class="w-full rounded-lg mb-4" />

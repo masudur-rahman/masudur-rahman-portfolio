@@ -3,6 +3,10 @@ document.addEventListener('DOMContentLoaded', function() {
   const triggers = document.querySelectorAll('.gallery-trigger');
   let currentModalIndex = -1;
 
+  modals.forEach(modal => {
+    document.body.appendChild(modal);
+  });
+
   function showModal(index) {
     if (currentModalIndex !== -1) {
       modals[currentModalIndex].classList.add('hidden');
