@@ -18,6 +18,11 @@
   --color-bg-tag: #f3f4f6; /* gray-100 */
   --color-text-role: #1e40af; /* blue-800 */
   --color-bg-role: #dbeafe; /* blue-100 */
+  --color-bg-filter-button: #f3f4f6; /* gray-100 */
+  --color-text-filter-button: #374151; /* gray-700 */
+  --color-bg-filter-button-hover: #e5e7eb; /* gray-200 */
+  --color-bg-filter-button-selected: #111827; /* gray-900 */
+  --color-text-filter-button-selected: #ffffff; /* white */
 }
 
 [data-theme="dark"] {
@@ -36,6 +41,11 @@
   --color-bg-tag: #1f2937; /* gray-800 */
   --color-text-role: #bfdbfe; /* blue-200 */
   --color-bg-role: #1e3a8a; /* blue-900 */
+  --color-bg-filter-button: #1f2937; /* gray-800 */
+  --color-text-filter-button: #d1d5db; /* gray-300 */
+  --color-bg-filter-button-hover: #374151; /* gray-700 */
+  --color-bg-filter-button-selected: #f9fafb; /* gray-100 */
+  --color-text-filter-button-selected: #111827; /* gray-900 */
 }
 
 body {
@@ -80,4 +90,18 @@ body {
 .animate-on-scroll.is-visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+.filter-button {
+  background-color: var(--color-bg-filter-button);
+  color: var(--color-text-filter-button);
+}
+
+.filter-button:hover {
+  background-color: var(--color-bg-filter-button-hover);
+}
+
+.filter-button.selected {
+  background-color: var(--color-bg-filter-button-selected);
+  color: var(--color-text-filter-button-selected);
 }

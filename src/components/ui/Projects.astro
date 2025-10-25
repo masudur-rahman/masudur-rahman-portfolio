@@ -27,10 +27,8 @@ const hasFilters = siteConfig.projectFilters && siteConfig.projectFilters.length
                 <div class="flex flex-wrap gap-2 sm:gap-3">
                   {siteConfig.projectFilters.map((filter) => (
                     <button
-                      class={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
-                        filter.filter === "all"
-                          ? "bg-gray-900 text-white"
-                          : "bg-[var(--color-bg-tag)] text-[var(--color-text-tag)] hover:bg-gray-200"
+                      class={`filter-button px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
+                        filter.filter === "all" ? "selected" : ""
                       }`}
                       data-filter={filter.filter}
                     >

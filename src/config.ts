@@ -2,10 +2,10 @@ export type URL = string;
 export type ImagePath = string;
 
 export enum ProjectCategory {
-  All = "all",
-  Professional = "professional",
-  Academic = "academic",
-  Hobby = "hobby",
+  All = "All",
+  Professional = "Professional",
+  Academic = "Academic",
+  Hobby = "Hobby",
 }
 
 export const siteConfig = {

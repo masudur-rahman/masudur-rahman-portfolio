@@ -1,13 +1,13 @@
 function filterProjects(filter) {
   const projects = document.querySelectorAll('.project-item');
-  const buttons = document.querySelectorAll('[data-filter]');
+  const buttons = document.querySelectorAll('.filter-button');
 
   // Update button states
   buttons.forEach(button => {
     if (button.dataset.filter === filter) {
-      button.className = 'px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 bg-gray-900 text-white';
+      button.classList.add('selected');
     } else {
-      button.className = 'px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 bg-gray-100 text-gray-700 hover:bg-gray-200';
+      button.classList.remove('selected');
     }
   });
 
@@ -35,7 +35,7 @@ document.head.appendChild(style);
 
 // Add event listeners when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
-  const filterButtons = document.querySelectorAll('[data-filter]');
+  const filterButtons = document.querySelectorAll('.filter-button');
   filterButtons.forEach(button => {
     button.addEventListener('click', function() {
       const filter = this.dataset.filter;

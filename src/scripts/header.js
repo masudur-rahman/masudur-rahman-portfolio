@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
     mobileMenu.classList.toggle('hidden');
     const svgs = hamburgerButton.querySelectorAll('svg');
     svgs[0].classList.toggle('hidden');
-    svgs[1].classList.toggle('block');
+    svgs[1].classList.toggle('hidden');
   });
 
   mobileMenuLinks.forEach(link => {
@@ -50,7 +50,6 @@ document.addEventListener('DOMContentLoaded', () => {
       mobileMenu.classList.add('hidden');
       const svgs = hamburgerButton.querySelectorAll('svg');
       svgs[0].classList.remove('hidden');
-      svgs[1].classList.remove('block');
       svgs[1].classList.add('hidden');
     });
   });
