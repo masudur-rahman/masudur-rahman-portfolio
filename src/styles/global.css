@@ -48,10 +48,35 @@
   --color-text-filter-button-selected: #111827; /* gray-900 */
 }
 
+html {
+}
+
 body {
   font-family: 'IBM Plex Mono', monospace;
   background-color: var(--color-bg);
   color: var(--color-text);
+  height: 100vh;
+  overflow: hidden;
+}
+
+main {
+  height: 100vh;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+
+.scroll-section {
+  height: 100vh;
+  overflow-y: auto;
+  scroll-snap-align: start;
+}
+
+.last-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
 }
 
 .markdown-content a,
@@ -79,17 +104,6 @@ body {
 [data-theme="dark"] .markdown-content p > a:hover,
 [data-theme="dark"] .markdown-content span > a:hover {
   color: var(--color-secondary) !important;
-}
-
-.animate-on-scroll {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-}
-
-.animate-on-scroll.is-visible {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 .filter-button {

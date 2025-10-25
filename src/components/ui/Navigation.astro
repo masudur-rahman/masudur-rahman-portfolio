@@ -19,8 +19,10 @@ const linkClasses = isMobile
 ---
 
 <a href="#about" class={linkClasses}>About</a>
+{hasExperience && <a href="#experience" class={linkClasses}>Experience</a>}
 {hasProjects && <a href="#projects" class={linkClasses}>Projects</a>}
 {hasOpenSource && <a href="#open-source" class={linkClasses}>Open Source</a>}
-{hasExperience && <a href="#experience" class={linkClasses}>Experience</a>}
 {hasEducation && <a href="#education" class={linkClasses}>Education</a>}
+<a href="#achievements" class={linkClasses}>Achievements</a>
+<a href="#gallery" class={linkClasses}>Gallery</a>
 <ThemeToggle />

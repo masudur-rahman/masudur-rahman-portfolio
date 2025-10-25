@@ -42,4 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
       filterProjects(filter);
     });
   });
+
+  // Set initial filter to 'all'
+  filterProjects('all');
 });

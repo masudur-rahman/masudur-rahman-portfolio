@@ -2,11 +2,60 @@ export type URL = string;
 export type ImagePath = string;
 
 export enum ProjectCategory {
-  All = "All",
+  All = "all",
   Professional = "Professional",
   Academic = "Academic",
   Hobby = "Hobby",
 }
+
+export type Social = {
+  name: string;
+  url: URL;
+};
+
+export type Project = {
+  name: string;
+  description: string;
+  link: URL;
+  skills: string[];
+  category: ProjectCategory;
+  role: string;
+  timeline?: string;
+};
+
+export type OpenSourceProject = {
+  name: string;
+  description: string;
+  link: URL;
+  skills: string[];
+  role: string;
+};
+
+export type Bullet = {
+  text: string;
+  tools?: string[];
+};
+
+export type Experience = {
+  company: string;
+  title: string;
+  dateRange: string;
+  bullets: (string | Bullet)[];
+};
+
+export type Education = {
+  school: string;
+  degree: string;
+  dateRange: string;
+  achievements: string[];
+};
+
+export type Gallery = {
+  image: ImagePath;
+  title: string;
+  description: string;
+  date: string;
+};
 
 export const siteConfig = {
   name: "Masudur Rahman",
@@ -150,36 +199,54 @@ export const siteConfig = {
 
   experience: [
     {
-      company: "[Pathao Ltd](https://pathao.com), Fintech Engineering",
+      company: "[Pathao Ltd.](https://pathao.com), Fintech Engineering",
       title: "Senior Software Engineer (DevOps)",
       dateRange: "Jan 2024 - Present",
       bullets: [
-        "Introduced Descheduler for evenly distributing resources accross kubernetes cluster to minimize node over/under utilization. Tools: Go, Helm, k8s etc.",
-        "Setup Airflow a data pipelining tool for transferring important database info from on- premises systems to GCP BigQuery for enhanced monitoring. Tools: Ansible, Helm, k8s.",
+        {
+          text: "Introduced Descheduler for evenly distributing resources accross kubernetes cluster to minimize node over/under utilization.",
+          tools: ["Go", "Helm", "k8s"],
+        },
+        {
+          text: "Setup Airflow a data pipelining tool for transferring important database info from on- premises systems to GCP BigQuery for enhanced monitoring.",
+          tools: ["Ansible", "Helm", "k8s"],
+        },
         "Significantly improved Logging and Monitoring capabilities within the Pathao Pay architecture by introducing comprehensive service dashboards, thereby enhancing operational visibility.",
         "Enhanced Firewall Rules for virtual machines, ensuring robust protection against potential threats.",
       ],
     },
     {
-      company: "[AppsCode Inc](https://appscode.com)",
+      company: "[AppsCode Inc.](https://appscode.com)",
       title: "Lead Software Engineer",
       dateRange: "Jun 2023 - Dec 2023",
       bullets: [
-        "Lead the design and maintenance of AppsCode API Server, a RESTful API for managing Kubernetes clusters and applications. Tools: Go, go-macaron, Helm, k8s etc.",
+        {
+          text: "Lead the design and maintenance of AppsCode API Server, a RESTful API for managing Kubernetes clusters and applications.",
+          tools: ["Go", "go-macaron", "Helm", "k8s"],
+        },
         "Restructured the cluster import flow for AppsCode Console, improving the user experience and performance.",
         "Implemented dynamic feature controller for managing different features in imported clusters, such as monitoring, security",
         "Restructured the Licensing system for AppsCode products, automating the license issuance, validation and enforcement.",
-        "Packaged AppsCode Console as a Service and made it ready for deployment in user k8s clusters (vendor-managed or self-managed) and through various DNS providers and Cloud Storage Services. Tools: CloudDNS, Cloudflare, AzureDNS, Route53 etc. and also GCS, s3, Azure Blob Storage, Linode Object Storage.",
+        {
+          text: "Packaged AppsCode Console as a Service and made it ready for deployment in user k8s clusters (vendor-managed or self-managed) and through various DNS providers and Cloud Storage Services.",
+          tools: ["CloudDNS", "Cloudflare", "AzureDNS", "Route53", "GCS", "s3", "Azure Blob Storage", "Linode Object Storage"],
+        },
       ],
     },
     {
-      company: "[AppsCode Inc](https://appscode.com)",
+      company: "[AppsCode Inc.](https://appscode.com)",
       title: "Senior Software Engineer",
       dateRange: "Jan 2021 - Dec 2022",
       bullets: [
-        "Designed and Maintained ByteBuilders API Server. Tools used: Go, macaron web framework, helm, k8s.",
+        {
+          text: "Designed and Maintained ByteBuilders API Server.",
+          tools: ["Go", "macaron web framework", "helm", "k8s"],
+        },
         "Added a support for importing Kubernetes Cluster [Managed, Public & Air Gaped] to ByteBuilders Dashboard.",
-        "Implemented A Background Task Manager for long running tasks, log/exec features for Kubernetes pods/services and Invoice generation from users' usage data with the help of NATS. Tools used: Go, k8s, NATS",
+        {
+          text: "Implemented A Background Task Manager for long running tasks, log/exec features for Kubernetes pods/services and Invoice generation from users' usage data with the help of NATS.",
+          tools: ["Go", "k8s", "NATS"],
+        },
         "Developed a Prometheus Proxy Server for Grafana datasource.",
         "Added CI/CD pipelines for projects in Github Actions.",
         "Involved in Deployment & Maintenance of ByteBuilders Production Server.",
@@ -187,11 +254,14 @@ export const siteConfig = {
       ],
     },
     {
-      company: "AppsCode Inc",
+      company: "[AppsCode Inc.](https://appscode.com)",
       title: "Software Engineer",
       dateRange: "Nov 2018 - Dec 2020",
       bullets: [
-        "Implemented a feature in [Pharmer](https://github.com/pharmer/pharmer) project to support Kubernetes Cluster Provisioning in Google Compute Engine using Cluster API. Tools used: Go, Shell scripts.",
+        {
+          text: "Implemented a feature in [Pharmer](https://github.com/pharmer/pharmer) project to support Kubernetes Cluster Provisioning in Google Compute Engine using Cluster API.",
+          tools: ["Go", "Shell scripts"],
+        },
         "Contributed in ByteBuilders API Server integrating various features.",
         "Integrated Stripe Payment APIs including product, plan, payment and invoice apis.",
         "Developed a Kubernetes Controller for Provisioning and Managing Grafana Dashboards and Datasources.",
@@ -202,7 +272,7 @@ export const siteConfig = {
     {
       school: "[Chittagong University of Engineering and Technology, Chittagong](https://cuet.ac.bd)",
       degree: "BSc in Computer Science & Engineering",
-      dateRange: "2014 - 2018",
+      dateRange: "2014-2018",
       achievements: [
         "Graduated with 3.76/4 CGPA",
         "Participated in numerous national and international Programming contests."
@@ -217,7 +287,7 @@ export const siteConfig = {
       ],
     },
     {
-      school: "Shaheb Rampur High School, Madaripur",
+      school: "[Shaheb Rampur High School, Madaripur](https://www.sohopathi.com/shaheb-rampur-m-l-high-school)",
       degree: "Secondary School Certificate",
       dateRange: "2006-2011",
       achievements: [

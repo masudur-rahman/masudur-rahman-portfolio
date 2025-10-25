@@ -45,11 +45,12 @@
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     const backToTopButton = document.getElementById('back-to-top');
+    const main = document.querySelector('main');
 
-    if (backToTopButton) {
+    if (backToTopButton && main) {
       // Show or hide the button based on scroll position
-      window.addEventListener('scroll', () => {
-        if (window.scrollY > 300) { // Show after scrolling 300px
+      main.addEventListener('scroll', () => {
+        if (main.scrollTop > 300) { // Show after scrolling 300px
           backToTopButton.classList.add('is-visible');
         } else {
           backToTopButton.classList.remove('is-visible');
@@ -58,7 +59,7 @@
 
       // Scroll to top on click
       backToTopButton.addEventListener('click', () => {
-        window.scrollTo({
+        main.scrollTo({
           top: 0,
           behavior: 'smooth'
         });

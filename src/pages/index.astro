@@ -48,24 +48,20 @@ import "../styles/global.css";
   <body>
     <Header />
     <main>
-      <div class="animate-on-scroll"><Hero /></div>
-      <Hr />
-      <div class="animate-on-scroll"><About /></div>
-      <Hr />
-      <div class="animate-on-scroll"><Experience /></div>
-      <Hr />
-      <div class="animate-on-scroll"><Projects /></div>
-      <Hr />
-      <div class="animate-on-scroll"><OpenSource /></div>
-      <Hr />
-      <div class="animate-on-scroll"><Education /></div>
-      <Hr />
-      <div class="animate-on-scroll"><Achievements /></div>
-      <Hr />
-      <div class="animate-on-scroll"><Gallery /></div>
+      <div id="hero" class="scroll-section"><Hero /></div>
+      <div id="about" class="scroll-section"><About /></div>
+      <div id="experience" class="scroll-section"><Experience /></div>
+      <div id="projects" class="scroll-section"><Projects /></div>
+      <div id="open-source" class="scroll-section"><OpenSource /></div>
+      <div id="education" class="scroll-section"><Education /></div>
+      <div id="achievements" class="scroll-section"><Achievements /></div>
+      <div id="gallery" class="scroll-section last-section">
+        <Gallery />
+        <Footer />
+      </div>
     </main>
-    <Footer />
     <BackToTop />
-    <script src="../scripts/scroll-animation.js"></script>
+    <script src="../scripts/scroll-snap-fix.js"></script>
+    <script src="../scripts/nav-links.js"></script>
   </body>
 </html>

@@ -9,9 +9,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const lightGradient = `linear-gradient(to right, ${accentColor}10, #ffffffb3)`; // Lighter alpha
   const darkGradient = `linear-gradient(to right, ${accentColor}20, #1a1a1a99)`; // Lighter alpha
 
+  const main = document.querySelector('main');
+
   const updateHeaderStyle = () => {
     const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    if (window.scrollY > 100) {
+    if (main.scrollTop > 100) {
       header.style.background = isDark ? darkGradient : lightGradient;
       header.classList.add("backdrop-blur-sm", "shadow-sm");
     } else {
@@ -21,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   // 1. Update header on scroll
-  window.addEventListener("scroll", updateHeaderStyle);
+  main.addEventListener("scroll", updateHeaderStyle);
 
   // 2. Update header on theme change
   const observer = new MutationObserver((mutationsList) => {
