@@ -7,6 +7,17 @@ const hasOpenSource = siteConfig.openSourceProjects && siteConfig.openSourceProj
 const hasExperience = siteConfig.experience && siteConfig.experience.length > 0;
 const hasEducation = siteConfig.education && siteConfig.education.length > 0;
 
+const navLinks = [
+    { name: "About", href: "#about" },
+    ...(hasExperience ? [{ name: "Experience", shortName: "Exp", href: "#experience" }] : []),
+    ...(hasProjects ? [{ name: "Projects", shortName: "Work", href: "#projects" }] : []),
+    ...(hasOpenSource ? [{ name: "Open Source", shortName: "OSS", href: "#open-source" }] : []),
+    ...(hasEducation ? [{ name: "Education", shortName: "Edu", href: "#education" }] : []),
+    { name: "Achievements", shortName: "Feats", href: "#achievements" },
+    { name: "Credentials", shortName: "Creds", href: "#certifications" },
+    { name: "Gallery", href: "#gallery" },
+];
+
 interface Props {
   isMobile?: boolean;
 }
@@ -15,14 +26,12 @@ const { isMobile } = Astro.props;
 
 const linkClasses = isMobile
   ? "text-[var(--color-text-body)] hover:text-[var(--color-text-section-title)] block px-3 py-2 rounded-md text-base font-medium"
-  : "text-[var(--color-text-body)] hover:text-[var(--color-text-section-title)] transition-colors font-medium px-3 py-2 rounded-md text-sm";
+  : "text-[var(--color-text-body)] hover:text-[var(--color-text-section-title)] transition-colors font-medium px-3 md:px-2 py-2 rounded-md text-sm md:text-xs";
 ---
 
-<a href="#about" class={linkClasses}>About</a>
-{hasExperience && <a href="#experience" class={linkClasses}>Experience</a>}
-{hasProjects && <a href="#projects" class={linkClasses}>Projects</a>}
-{hasOpenSource && <a href="#open-source" class={linkClasses}>Open Source</a>}
-{hasEducation && <a href="#education" class={linkClasses}>Education</a>}
-<a href="#achievements" class={linkClasses}>Achievements</a>
-<a href="#gallery" class={linkClasses}>Gallery</a>
+{navLinks.map(link => (
+    <a href={link.href} class={linkClasses}>
+        {isMobile ? link.name : (link.shortName || link.name)}
+    </a>
+))}
 <ThemeToggle />

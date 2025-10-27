@@ -57,6 +57,16 @@ export type Gallery = {
   date: string;
 };
 
+export type Certification = {
+  name: string;
+  issuer: string;
+  issueDate: string;
+  expirationDate?: string;
+  credentialId?: string;
+  credentialUrl: URL;
+  logo?: ImagePath;
+};
+
 export const siteConfig = {
   name: "Masudur Rahman",
   title: "Senior Software Engineer, Pathao Ltd (Fintech Engineering)",
@@ -335,4 +345,15 @@ export const siteConfig = {
       date: "2017-07-12"
     }
   ],
+
+  certifications: [
+    {
+      name: "CKA: Certified Kubernetes Administrator",
+      issuer: "The Linux Foundation",
+      issueDate: "Oct 2025",
+      expirationDate: "Oct 2027",
+      credentialId: "LF-wtyegudkav",
+      credentialUrl: "https://www.credly.com/badges/351fbffa-af1e-4803-8e60-8fd52c617606/public_url",
+    }
+  ]
 };
