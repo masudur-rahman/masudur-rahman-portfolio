@@ -1,187 +1,209 @@
-<img width="1943" height="1093" alt="image" src="https://github.com/user-attachments/assets/cc2ff955-17c2-48c7-81c8-479a0f061850" />
+# Masudur Rahman's Personal Portfolio
 
-# DevPortfolio Template
+This is the source code for my personal portfolio website, live at [mrahman.xyz](https://mrahman.xyz).
 
-A modern, minimalist portfolio template built with Astro and Tailwind CSS. Perfect for developers looking to showcase their skills, experience, and projects in a clean, professional way.
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="public/images/mrahman.xyz_dark.png">
+  <source media="(prefers-color-scheme: light)" srcset="public/images/mrahman.xyz_light.png">
+  <img alt="Portfolio Screenshot" src="public/images/mrahman.xyz_light.png">
+</picture>
 
-This was completely rebuilt from the ground up from V1. This template was built to be entirely ready to go with a quick config edit (see below) but also provides the ability to easily extend in whatever way you want.
+## Key Features
 
-This template also comes with `CLAUDE.md` and `.cursor/rules` files for easy integration with your existing AI workflows.
-
-> **📬 Connect & Share!**  
-> For questions and updates, feel free to reach out on [**X (Twitter)**](https://x.com/rfitzio).  
-> If you've built and published your personal site with this template, I'd love to see it! Send me a DM 🚀
-
-## Preview
-
-To view a live preview of the site, [click here](https://ryanfitzgerald.github.io/devportfolio/).
+*   **Fully Responsive:** Built with a mobile-first approach and enhanced to ensure a seamless experience on all devices.
+*   **Dynamic Viewport Sizing:** Uses `dvh` to prevent content from being hidden by mobile browser toolbars.
+*   **Interactive Gallery:** The image gallery includes navigation buttons and swipe functionality for easy browsing.
+*   **Comprehensive Sections:** Includes dedicated sections for Open Source contributions, certifications, and achievements.
+*   **Rich Experience Timeline:** The experience section supports detailed bullet points with associated tools and technologies.
 
 ## Built With
 
-- **[Astro](https://astro.build/)** - Static site generator for modern web apps
-- **[Tailwind CSS v4](https://tailwindcss.com/)** - Utility-first CSS framework
-- **[Tabler Icons](https://tabler.io/icons)** - Free and open source icons
-- **TypeScript** - For type-safe configuration
+*   **[Astro](https://astro.build/)** - Static site generator
+*   **[Tailwind CSS](https://tailwindcss.com/)** - Utility-first CSS framework
+*   **[Tabler Icons](https://tabler.io/icons)** - Open source icons
+*   **TypeScript**
 
-## Updating the Template
+## Configuration
 
-### Configuration
+This portfolio is designed to be easily customized through the `src/config.ts` file. This single file controls all the content on the site.
 
-The template is designed to be easily customizable through the `src/config.ts` file. This single file controls:
-
-- **Personal Information**: Name, title, description
-- **Accent Color**: Primary color theme (changing this will change the accent color site wide)
-- **Social Links**: Email, LinkedIn, Twitter, GitHub (all optional)
-- **About Section**: Personal bio/description
-- **Skills**: List of technical skills
-- **Projects**: Project showcase with descriptions and links
-- **Experience**: Work history with bullet points
-- **Education**: Educational background and achievements
-
-If skills, projects, experience, or education are removed from the config, those sections will be hidden entirely.
-
-### Example structures
-
-Here's what the config data structure looks like for each section:
-
-#### Basic Information
+### Basic Information
 ```typescript
-name: "Your Name",
-title: "Your Job Title",
-description: "Brief site description",
-accentColor: "#1d4ed8", // Hex color for theme
+export const siteConfig = {
+  name: "Your Name",
+  title: "Your Job Title",
+  description: "A brief description for SEO purposes.",
+  accentColor: "#1d4ed8", // Hex color for the theme
+};
 ```
 
-#### Social Links (all optional)
+### Social Links
 ```typescript
-social: {
-  email: "your-email@example.com",
-  linkedin: "https://linkedin.com/in/yourprofile",
-  twitter: "https://twitter.com/yourprofile", 
-  github: "https://github.com/yourusername",
-}
+social: [
+  {
+    name: "Email",
+    url: "mailto:your.email@example.com",
+  },
+  {
+    name: "LinkedIn",
+    url: "https://linkedin.com/in/yourprofile",
+  },
+],
 ```
 
-#### About Section
+### About & Skills
 ```typescript
-aboutMe: "A paragraph describing yourself, your background, interests, and what you're passionate about. This appears in the About section of your portfolio."
+aboutMe: "A paragraph about yourself.",
+skills: ["Go", "Kubernetes", "Docker", "Prometheus"],
 ```
 
-#### Skills
-```typescript
-skills: ["JavaScript", "React", "Node.js", "Python", "AWS", "Docker"]
-```
-
-#### Projects
+### Projects
+Projects are categorized as `Professional`, `Academic`, or `Hobby`.
 ```typescript
 projects: [
   {
     name: "Project Name",
-    description: "Brief description of what the project does and its impact",
-    link: "https://github.com/yourusername/project",
-    skills: ["React", "Node.js", "AWS"], // Technologies used
+    description: "A description of the project.",
+    link: "https://github.com/your/project",
+    skills: ["Go", "GraphQL"],
+    category: ProjectCategory.Hobby,
+    role: "Owner",
+    timeline: "Jan 2024 - Present", // Optional
   }
-]
+],
 ```
 
-#### Experience
+### Open Source Contributions
+```typescript
+openSourceProjects: [
+  {
+    name: "Kubernetes",
+    description: "A brief description of your contribution.",
+    link: "https://github.com/kubernetes/kubernetes/pull/12345",
+    skills: ["Go", "Kubernetes"],
+    role: "Contributor",
+  }
+],
+```
+
+### Work Experience
+Bullets can be simple strings or objects containing `text` and a list of `tools`.
 ```typescript
 experience: [
   {
     company: "Company Name",
-    title: "Your Job Title",
-    dateRange: "Jan 2022 - Present",
+    title: "Senior Software Engineer",
+    dateRange: "Jan 2024 - Present",
     bullets: [
-      "Led development of microservices architecture serving 1M+ users",
-      "Reduced API response times by 40% through optimization",
-      "Mentored team of 5 junior developers",
+      "A simple string bullet point describing a responsibility.",
+      {
+        text: "A detailed bullet point with associated tools.",
+        tools: ["Go", "Helm", "Kubernetes"],
+      },
     ],
   }
-]
+],
 ```
 
-#### Education
+### Education
 ```typescript
 education: [
   {
     school: "University Name",
     degree: "Bachelor of Science in Computer Science",
-    dateRange: "2014 - 2018",
+    dateRange: "2018-2022",
     achievements: [
-      "Graduated Magna Cum Laude with 3.8 GPA",
+      "Graduated Magna Cum Laude",
       "Dean's List all semesters",
-      "President of Computer Science Club"
     ]
+  }
+],
+```
+
+### Achievements, Gallery, and Certifications
+```typescript
+// A simple list of strings
+achievements: [
+  "Certified Kubernetes Administrator (CKA)",
+  "Rank 27 in ICPC Dhaka Regional 2017",
+],
+
+// Image gallery items
+gallery: [
+  {
+    image: "/images/gallery/your-image.jpg",
+    title: "Image Title",
+    description: "A short description of the image.",
+    date: "2025-10-18"
+  }
+],
+
+// Certification details
+certifications: [
+  {
+    name: "CKA: Certified Kubernetes Administrator",
+    issuer: "The Linux Foundation",
+    issueDate: "Oct 2025",
+    expirationDate: "Oct 2027", // Optional
+    credentialId: "LF-123456", // Optional
+    credentialUrl: "https://www.credly.com/your/badge",
   }
 ]
 ```
 
-### Icons
+## Deployment to GitHub Pages
 
-The template uses [Tabler Icons](https://tabler.io/icons) for all icons. If you wish to add more icons and have it look consistent with what's already there, you can browse through their extensive icon library.
+This project can be easily deployed using GitHub Pages.
 
-## Project Structure
+### 1. Configure Astro for GitHub Pages
+In the `astro.config.mjs` file, set the `site` property to your GitHub Pages URL.
 
+```javascript
+// astro.config.mjs
+import { defineConfig } from 'astro/config';
+
+export default defineConfig({
+  site: 'https://masudur-rahman.github.io', // Your GitHub Pages URL
+  // ...
+});
 ```
-devportfolio/
-├── public/
-│   └── favicon.svg          # Site favicon
-├── src/
-│   ├── components/          # Astro components
-│   │   ├── About.astro      # About section
-│   │   ├── Education.astro  # Education section
-│   │   ├── Experience.astro # Work experience section
-│   │   ├── Footer.astro     # Site footer
-│   │   ├── Header.astro     # Navigation header
-│   │   ├── Hero.astro       # Hero/intro section
-│   │   └── Projects.astro   # Projects showcase
-│   ├── pages/
-│   │   └── index.astro      # Main page layout
-│   ├── styles/
-│   │   └── global.css       # Global styles
-│   └── config.ts            # Site configuration
-├── astro.config.mjs         # Astro configuration
-├── package.json             # Project dependencies
-├── tailwind.config.js       # Tailwind configuration
-└── tsconfig.json            # TypeScript configuration
+If you are using a custom domain, like `mrahman.xyz`, set `site` to your custom domain URL:
+```javascript
+// astro.config.mjs
+site: 'https://mrahman.xyz',
 ```
 
-## Local Development
+### 2. Add a GitHub Actions Workflow
+Create a file at `.github/workflows/deploy.yml` and add the official deployment workflow from the [Astro documentation](https://docs.astro.build/en/guides/deploy/github-pages/#github-actions).
 
-If you'd like to run it locally:
+### 3. Set up Custom Domain (Optional)
+To use a custom domain like `mrahman.xyz`:
+1.  Create a file named `CNAME` in your `public/` directory.
+2.  Inside the `CNAME` file, add a single line with your domain name: `mrahman.xyz`.
+3.  Configure the DNS settings for your domain with your domain registrar to point to GitHub Pages. Follow the official [GitHub guide](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site) for this.
 
-```
-git clone https://github.com/RyanFitzgerald/devportfolio.git
-cd devportfolio
+## Running Locally
+
+To run this project on your local machine:
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/masudur-rahman/masudur-rahman-portfolio.git
+
+# 2. Navigate into the directory
+cd masudur-rahman-portfolio
+
+# 3. Install dependencies
 npm install
-```
 
-After that, start up the Astro dev server with:
-
-```
+# 4. Start the development server
 npm run dev
 ```
 
-## Deployment
+## Acknowledgements
 
-The template can be deployed to any static hosting service easily (and in most cases, completely free). Here are some options:
+This portfolio's design and structure were inspired by the `devportfolio` template created by [Ryan Fitzgerald](https://github.com/RyanFitzgerald).
 
-- To deploy with Netlify, [click here](https://docs.astro.build/en/guides/deploy/netlify/).
-- To deploy with Vercel, [click here](https://docs.astro.build/en/guides/deploy/vercel/).
-- To deploy with GitHub Pages, [click here](https://docs.astro.build/en/guides/deploy/github/).
-- To deploy with Cloudflare Pages, [click here](https://docs.astro.build/en/guides/deploy/cloudflare/).
-- To deploy with Render, [click here](https://docs.astro.build/en/guides/deploy/render/).
+---
 
-Want to deploy somewhere else? Find more guides [here](https://docs.astro.build/en/guides/deploy/).
-
-## Changelog
-
-To view the changelog, see CHANGELOG.md.
-
-## License
-
-This project is fully and completely MIT. See LICENSE.md.
-
-## Questions?
-
-Feel free to reach out on [X (Twitter)](https://x.com/rfitzio) if you have any questions or need help.
+This project is licensed under the MIT License. See the `LICENSE.md` file for details.
