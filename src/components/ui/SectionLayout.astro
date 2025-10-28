@@ -6,11 +6,11 @@ interface Props {
 const { title } = Astro.props;
 ---
 
-<section class="p-8 sm:p-12 md:p-16 lg:p-24">
+<section class="p-6 sm:p-10 md:p-14 lg:p-24">
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
-    <div class="lg:col-span-4 self-start top-24 sticky">
+    <div class="lg:col-span-4 lg:sticky self-start top-24">
       <h2
-        class="text-3xl sm:text-4xl md:text-5xl xl:text-7xl font-bold text-[var(--color-text-section-title)]"
+        class="text-3xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-6xl font-bold text-[var(--color-text-section-title)]"
       >
         {title}
       </h2>

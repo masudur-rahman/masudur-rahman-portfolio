@@ -209,7 +209,7 @@ export const siteConfig = {
 
   experience: [
     {
-      company: "[Pathao Ltd.](https://pathao.com), Fintech Engineering",
+      company: "[Pathao Ltd](https://pathao.com)., Fintech Engineering",
       title: "Senior Software Engineer (DevOps)",
       dateRange: "Jan 2024 - Present",
       bullets: [
@@ -226,7 +226,7 @@ export const siteConfig = {
       ],
     },
     {
-      company: "[AppsCode Inc.](https://appscode.com)",
+      company: "[AppsCode Inc](https://appscode.com).",
       title: "Lead Software Engineer",
       dateRange: "Jun 2023 - Dec 2023",
       bullets: [
@@ -244,7 +244,7 @@ export const siteConfig = {
       ],
     },
     {
-      company: "[AppsCode Inc.](https://appscode.com)",
+      company: "[AppsCode Inc](https://appscode.com).",
       title: "Senior Software Engineer",
       dateRange: "Jan 2021 - Dec 2022",
       bullets: [
@@ -264,7 +264,7 @@ export const siteConfig = {
       ],
     },
     {
-      company: "[AppsCode Inc.](https://appscode.com)",
+      company: "[AppsCode Inc](https://appscode.com).",
       title: "Software Engineer",
       dateRange: "Nov 2018 - Dec 2020",
       bullets: [

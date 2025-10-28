@@ -6,12 +6,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Define gradients using the site's accent color
   const accentColor = "#1d4ed8"; // From siteConfig
-  const lightGradient = `linear-gradient(to right, ${accentColor}10, #ffffffb3)`; // Lighter alpha
-  const darkGradient = `linear-gradient(to right, ${accentColor}20, #1a1a1a99)`; // Lighter alpha
+  const lightGradient = `linear-gradient(to right, ${accentColor}26 1%, #ffffff26)`; // Lighter alpha
+  const darkGradient = `linear-gradient(to right, ${accentColor}26 2%, #1a1a1a26)`; // Lighter alpha
 
   const main = document.querySelector('main');
 
   const updateHeaderStyle = () => {
+    const isExpanded = hamburgerButton.getAttribute('aria-expanded') === 'true';
+    if (isExpanded) {
+      return;
+    }
     const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
     if (main.scrollTop > 100) {
       header.style.background = isDark ? darkGradient : lightGradient;
@@ -44,6 +48,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const svgs = hamburgerButton.querySelectorAll('svg');
     svgs[0].classList.toggle('hidden');
     svgs[1].classList.toggle('hidden');
+
+    if (!isExpanded) {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      header.style.background = isDark ? darkGradient : lightGradient;
+      header.classList.add("backdrop-blur-sm", "shadow-sm");
+    } else {
+      updateHeaderStyle();
+    }
   });
 
   mobileMenuLinks.forEach(link => {

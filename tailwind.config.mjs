@@ -4,6 +4,9 @@ export default {
   darkMode: ['selector', '[data-theme="dark"]'],
   theme: {
     extend: {
+      screens: {
+        'lg': '950px',
+      },
       colors: {
         primary: '#2563eb',
         secondary: '#1d4ed8',

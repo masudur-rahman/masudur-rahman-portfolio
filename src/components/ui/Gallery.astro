@@ -24,12 +24,20 @@ const gallery = siteConfig.gallery ?? [];
     {/* Modals */}
     {gallery.map((item, idx) => (
       <div id={`gallery-modal-${idx}`} class="gallery-modal hidden fixed inset-0 z-[100] flex items-center justify-center bg-black/60" tabindex="-1" data-modal-index={idx}>
-        <div class="bg-bg-light dark:bg-bg-dark rounded-xl max-w-lg w-full p-4 relative gallery-modal-content">
-          <button type="button" class="absolute top-2 right-3 text-2xl text-[var(--color-text-muted)] p-2 hover:text-gray-800 dark:hover:text-gray-200 gallery-close" aria-label="Close">&times;</button>
+        <div class="bg-bg-light dark:bg-bg-dark rounded-xl max-w-3xl w-11/12 md:w-3/4 max-h-[90vh] overflow-y-auto p-4 relative gallery-modal-content">
+          <button type="button" class="absolute top-2 right-3 text-3xl text-[var(--color-text-muted)] p-2 hover:text-gray-800 dark:hover:text-gray-200 gallery-close" aria-label="Close">&times;</button>
           <img src={item.image} alt={item.title} class="w-full rounded-lg mb-4" />
           <div class="text-[var(--color-text-card-title)] text-lg font-semibold mb-2">{item.title ?? "Untitled"}</div>
           <div class="text-[var(--color-text-muted)] text-xs mb-3">{item.date ?? ""}</div>
           <div class="text-[var(--color-text-body)] text-base whitespace-pre-line prose prose-blue max-w-none markdown-content" set:html={renderMarkdown(item.description)}></div>
+
+          <!-- Navigation Buttons -->
+          <button type="button" class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-black/30 text-white p-3 rounded-full hover:bg-black/50 focus:outline-none gallery-prev">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
+          </button>
+          <button type="button" class="absolute top-1/2 right-4 transform -translate-y-1/2 bg-black/30 text-white p-3 rounded-full hover:bg-black/50 focus:outline-none gallery-next">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+          </button>
         </div>
       </div>
     ))}

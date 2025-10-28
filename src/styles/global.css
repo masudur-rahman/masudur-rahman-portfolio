@@ -55,21 +55,31 @@ body {
   font-family: 'IBM Plex Mono', monospace;
   background-color: var(--color-bg);
   color: var(--color-text);
-  height: 100vh;
+  height: 100dvh;
   overflow: hidden;
 }
 
 main {
-  height: 100vh;
+  height: 100dvh;
   overflow-y: auto;
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
 }
 
 .scroll-section {
-  height: 100vh;
+  height: 100dvh;
   overflow-y: auto;
   scroll-snap-align: start;
+}
+
+.scroll-section:not(#hero) {
+  padding-top: 4rem;
+}
+
+@screen lg {
+  .scroll-section {
+    padding-top: 0;
+  }
 }
 
 .last-section {
