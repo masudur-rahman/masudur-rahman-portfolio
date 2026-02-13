@@ -92,7 +92,7 @@ export const siteConfig = {
   ],
   aboutMe:
     "A professional Software Engineer with 5 years of experience in Back-End Development in Go and almost 2 years of experience in DevOps Engineering. A competitive programmer with great problem-solving skills. I am passionate about learning new things, and am highly adaptive to new technologies.",
-  skills: ["Go", "Bash", "C++", "Kubernetes", "CKA", "Docker", "Prometheus", "Grafana", "Helm", "Ansible", "Terraform", "Postgres", "Nats", "GH Actions", "FluxCD"],
+  skills: ["Go", "Bash", "C++", "Kubernetes", "CKA", "Talos", "Flatcar", "Docker", "Prometheus", "Grafana", "Helm", "Ansible", "Terraform", "Postgres", "Nats", "GH Actions", "FluxCD"],
   // Project filtering configuration (excluding open source - now has separate section)
   projectFilters: [
     { name: "All", filter: ProjectCategory.All },
@@ -214,16 +214,34 @@ export const siteConfig = {
       dateRange: "Jan 2024 - Present",
       bullets: [
         {
-          text: "Introduced Descheduler for evenly distributing resources accross kubernetes cluster to minimize node over/under utilization.",
-          tools: ["Go", "Helm", "k8s"],
+          text: "Built a resilient Kubernetes foundation by deploying Talos Linux clusters and automating Flatcar OS lifecycles to ensure immutable, repeatable infrastructure.",
+          tools: ["Talos Linux", "Flatcar", "Kubernetes", "Terraform", "Ansible"]
         },
         {
-          text: "Setup Airflow a data pipelining tool for transferring important database info from on- premises systems to GCP BigQuery for enhanced monitoring.",
-          tools: ["Ansible", "Helm", "k8s"],
+          text: "Balanced cluster workloads by introducing the Kubernetes Descheduler, which fixed node over-utilization and improved overall resource efficiency.",
+          tools: ["Kubernetes", "Descheduler", "Go", "Helm"]
         },
-        "Significantly improved Logging and Monitoring capabilities within the Pathao Pay architecture by introducing comprehensive service dashboards, thereby enhancing operational visibility.",
-        "Enhanced Firewall Rules for virtual machines, ensuring robust protection against potential threats.",
-      ],
+        {
+          text: "Streamlined data migrations by setting up Apache Airflow on Kubernetes, moving critical on-premise data to GCP BigQuery for better analytics and monitoring.",
+          tools: ["Airflow", "Helm", "Kubernetes", "Postgres", "GCP BigQuery", "Ansible"]
+        },
+        {
+          text: "Improved GKE workload scheduling by refactoring node pool logic (taints/tolerations) and integrating NFS-backed storage for stateful services.",
+          tools: ["GKE", "Kubernetes", "NFS", "Terraform"]
+        },
+        {
+          text: "Solved cross-site connectivity challenges by implementing Nginx Gateway and Squid proxy, enabling secure and observable traffic routing between distributed environments.",
+          tools: ["Nginx", "Squid", "Netbird", "Kubernetes"]
+        },
+        {
+          text: "Boosted system visibility by rolling out custom Grafana dashboards and Prometheus exporters for core infrastructure like DNS, GitLab, and Harbor.",
+          tools: ["Grafana", "Prometheus", "Exporters", "Linux"]
+        },
+        {
+          text: "Strengthened platform security by standardizing host-level firewall rules and deploying a WAF stack with Bunkerweb and CrowdSec.",
+          tools: ["iptables", "Bunkerweb", "CrowdSec", "Network Security"]
+        }
+      ]
     },
     {
       company: "[AppsCode Inc](https://appscode.com).",
