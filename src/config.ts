@@ -155,7 +155,7 @@ export const siteConfig = {
     {
       name: "Pawsitively Purrfect",
       description:
-        "Pawsitively Purrfect is a web application for Pet Adoption, written in Go, GraphQL. The project follows the Service-Repository-Data pattern for clean architecture. The Repository layer communicates with Data layer through a gRPC server.",
+        "Pet adoption web app in Go + GraphQL. Follows Service-Repository-Data pattern with a gRPC-based data layer.",
       link: "https://github.com/masudur-rahman/pawsitively-purrfect" as URL,
       skills: ["Go", "GraphQL"],
       category: ProjectCategory.Hobby,
@@ -164,7 +164,7 @@ export const siteConfig = {
     {
       name: "ByteBuilders by AppsCode",
       description:
-        "ByteBuilders is the Back-End server for a Kubernetes Dashboard. Deploy, manage, upgrade Kubernetes on any cloud and automate deployment, scaling, and management of containerized applications. Contributed in implementing the server. Integrated Stripe payment apis, implemented background task manager via NATS Messaging for long running apis, implemented wizard for importing Kubernetes clusters from various cloud providers, etc.",
+        "Back-end server for a Kubernetes dashboard built with Go. Features Stripe payment integration, a NATS event-driven background task manager for long-running operations, and a cluster import wizard supporting Managed, Public, and Air-Gapped Kubernetes clusters.",
       link: "https://appscode.com/console" as URL,
       skills: ["Go", "NATS"],
       category: ProjectCategory.Professional,
@@ -390,7 +390,7 @@ export const siteConfig = {
       degree: "Primary School Certificate",
       dateRange: "2001-2005",
       achievements: [
-        "Primary School Goverment Scholarship"
+        "Primary School Government Scholarship"
       ]
     }
   ],
