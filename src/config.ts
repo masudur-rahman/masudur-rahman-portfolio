@@ -146,7 +146,7 @@ export const siteConfig = {
     {
       name: "Expense Tracker Bot",
       description:
-        "A Telegram bot built with Go to manage and track personal finances. It allows users to record expenses, income, transfers, and loans directly from chat. The bot supports multi-account management (cash, bank, etc.) and generates categorized summaries and PDF reports. Designed for self-hosting with a simple, automation-friendly workflow.",
+        "A Telegram bot built with Go to manage and track personal finances. Parses natural language inputs to record expenses, income, transfers, and loans directly from chat. Supports multi-account management (cash, bank, etc.), categorized budgeting summaries, and automated PDF reports. Designed for self-hosting with a simple, automation-friendly workflow.",
       link: "https://github.com/masudur-rahman/expense-tracker-bot" as URL,
       skills: ["Go", "Telegram API"],
       category: ProjectCategory.Hobby,
@@ -164,7 +164,7 @@ export const siteConfig = {
     {
       name: "ByteBuilders by AppsCode",
       description:
-        "ByteBuilders is the Back-End server for a Kubernetes Dashboard. Deploy, manage, upgrade Kubernetes on any cloud and automate deployment, scaling, and management of containerized applications. Contributed in implementing the server. Integrated Stripe payment apis, implemented background task manager via NATS Messaging for long running apis, implemented wizard for imiporting Kubernetes clusters from various cloud providers, etc.",
+        "ByteBuilders is the Back-End server for a Kubernetes Dashboard. Deploy, manage, upgrade Kubernetes on any cloud and automate deployment, scaling, and management of containerized applications. Contributed in implementing the server. Integrated Stripe payment apis, implemented background task manager via NATS Messaging for long running apis, implemented wizard for importing Kubernetes clusters from various cloud providers, etc.",
       link: "https://appscode.com/console" as URL,
       skills: ["Go", "NATS"],
       category: ProjectCategory.Professional,
@@ -173,7 +173,7 @@ export const siteConfig = {
     {
       name: "Grafana Operator by AppsCode",
       description:
-        "Grafana Operator is a Kubernetes Controller for Provisioning and Managing Grafana Dashboards and Datasources. It's based on a grafana sdk. Contributed in adding the initial version of the operator. Also added E2E tests using Gingkgo.",
+        "Grafana Operator is a Kubernetes Controller for Provisioning and Managing Grafana Dashboards and Datasources. It's based on a grafana sdk. Contributed in adding the initial version of the operator. Also added E2E tests using Ginkgo.",
       link: "https://github.com/open-viz/grafana-tools" as URL,
       skills: ["Go"],
       category: ProjectCategory.Professional,
@@ -216,7 +216,7 @@ export const siteConfig = {
     {
       name: "Cluster API Provider GCP",
       description:
-        "Fixed some issues regarding k8s version, Node role and default disk size in the Kubernetes Cluster API Provider for Google Cloud Platform.",
+        "Fixed node role and disk size provisioning issues for **GCP** clusters.",
       link: "https://github.com/kubernetes-sigs/cluster-api-provider-gcp/pulls?q=is:pr+is:merged+author:masudur-rahman",
       skills: ["Go", "Kubernetes", "GCP"],
       role: "Contributor"
@@ -224,7 +224,7 @@ export const siteConfig = {
     {
       name: "Gitea",
       description:
-        "Refactored naming of users' avatars in the Gitea Git hosting service.",
+        "Refactored user avatar naming logic in the core **Go** backend.",
       link: "https://github.com/go-gitea/gitea/pull/8547",
       skills: ["Go", "Backend"],
       role: "Contributor"
@@ -232,7 +232,7 @@ export const siteConfig = {
     {
       name: "Grafana SDK",
       description:
-        "Refactored some existing APIs and added some new ones in the Grafana SDK for Go.",
+        "Refactored and implemented new **Go APIs** for Grafana integrations.",
       link: "https://github.com/grafana-tools/sdk/pulls?q=is:pr+is:merged+author:masudur-rahman",
       skills: ["Go", "Backend", "Grafana"],
       role: "Contributor"
@@ -240,7 +240,7 @@ export const siteConfig = {
     {
       name: "NATS Helm Chart",
       description:
-        "Fixed some Websocket related issues in NATS helm chart for Kubernetes deployments.",
+        "Fixed WebSocket connection issues in the **NATS** Helm chart.",
       link: "https://github.com/nats-io/k8s/pull/315",
       skills: ["Kubernetes", "NATS", "Helm"],
       role: "Contributor"
