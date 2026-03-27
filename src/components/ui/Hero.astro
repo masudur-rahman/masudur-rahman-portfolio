@@ -48,6 +48,15 @@ import Icon from "../Icon.astro";
       >
         {siteConfig.title}
       </p>
+      <div class="mt-6 sm:mt-8 flex flex-wrap gap-3 animate-fade-in animation-delay-500">
+        <a
+          href={siteConfig.resumeUrl}
+          download
+          class="accent-color inline-flex items-center justify-center px-6 py-3 rounded-md bg-[var(--accent-color)] text-white font-medium hover:opacity-90 transition-opacity duration-300"
+        >
+          Download Resume
+        </a>
+      </div>
     </div>
   </div>
   <div
@@ -76,6 +85,9 @@ import Icon from "../Icon.astro";
           <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
           {social.name === 'Email' && <path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z"></path>}
           {social.name === 'Email' && <path d="M3 7l9 6l9 -6"></path>}
+          {social.name === 'Website' && <path d="M12 22a10 10 0 1 0-0.001-20.001A10 10 0 0 0 12 22z"></path>}
+          {social.name === 'Website' && <path d="M2 12h20"></path>}
+          {social.name === 'Website' && <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>}
           {social.name === 'LinkedIn' && <path d="M8 11v5"></path>}
           {social.name === 'LinkedIn' && <path d="M8 8v.01"></path>}
           {social.name === 'LinkedIn' && <path d="M12 16v-5"></path>}

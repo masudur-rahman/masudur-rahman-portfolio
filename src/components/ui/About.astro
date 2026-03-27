@@ -9,12 +9,23 @@ import SectionLayout from "./SectionLayout.astro";
     <div class="space-y-8">
       <div class="text-lg sm:text-xl md:text-2xl leading-relaxed text-[var(--color-text-body)] prose max-w-none markdown-content" set:html={renderMarkdown(siteConfig.aboutMe)}></div>
       <div class="pt-4">
-        <div class="flex flex-wrap gap-3">
+        <div class="space-y-6">
           {
-            siteConfig.skills.map((skill) => (
-              <span class="px-3 sm:px-4 py-1.5 sm:py-2 bg-[var(--color-bg-tag)] text-[var(--color-text-tag)] rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200">
-                {skill}
-              </span>
+            siteConfig.skills.map((skillGroup) => (
+              <div class="flex flex-col sm:flex-row sm:items-start gap-2 sm:gap-4">
+                <h3 class="text-sm sm:text-base font-semibold text-[var(--color-text-section-title)] sm:min-w-[170px]">
+                  {skillGroup.group}:
+                </h3>
+                <div class="flex flex-wrap gap-3">
+                  {
+                    skillGroup.items.map((skill) => (
+                      <span class="px-3 sm:px-4 py-1.5 sm:py-2 bg-[var(--color-bg-tag)] text-[var(--color-text-tag)] rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200">
+                        {skill}
+                      </span>
+                    ))
+                  }
+                </div>
+              </div>
             ))
           }
         </div>

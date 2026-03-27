@@ -36,6 +36,11 @@ export type Bullet = {
   tools?: string[];
 };
 
+export type SkillsGroup = {
+  group: string;
+  items: string[];
+};
+
 export type Experience = {
   company: string;
   title: string;
@@ -69,13 +74,18 @@ export type Certification = {
 
 export const siteConfig = {
   name: "Masudur Rahman",
-  title: "Senior Software Engineer, Pathao Ltd (Fintech Engineering)",
+  title:
+    "Senior Software Engineer (DevOps) · Pathao Ltd (Fintech Engineering) | Go · Kubernetes · Observability · CKA Certified",
   description: "Portfolio website of Masudur Rahman",
   accentColor: "#1d4ed8",
   social: [
     {
       name: "Email",
       url: "mailto:masudjuly02@gmail.com",
+    },
+    {
+      name: "Website",
+      url: "https://mrahman.xyz",
     },
     {
       name: "LinkedIn",
@@ -91,8 +101,38 @@ export const siteConfig = {
     },
   ],
   aboutMe:
-    "A professional Software Engineer with 5 years of experience in Back-End Development in Go and almost 2 years of experience in DevOps Engineering. A competitive programmer with great problem-solving skills. I am passionate about learning new things, and am highly adaptive to new technologies.",
-  skills: ["Go", "Bash", "C++", "Kubernetes", "CKA", "Talos", "Flatcar", "Docker", "Prometheus", "Grafana", "Helm", "Ansible", "Terraform", "Postgres", "Nats", "GH Actions", "FluxCD"],
+    "Senior Software Engineer with **7+ years** of experience in Go backend development and Kubernetes infrastructure.\n\nAt **Pathao Ltd (Fintech Engineering)**, I build and operate production-grade platform infrastructure — spanning immutable **Talos Linux** clusters, **GitOps** pipelines, custom observability stacks, and WAF security layers.\n\nPreviously at **AppsCode Inc. (5 years)**, I designed and maintained multi-tenant Kubernetes management platforms, led teams on cloud-native SaaS products, and contributed to open-source projects including **Gitea**, **Cluster API GCP**, **Grafana SDK**, and **NATS**.\n\n- **CKA certified**, currently working toward **CKS**.\n- Competitive programming background — ICPC Dhaka Regional finalist, Codeforces max rating **1702**, **1400+** problems solved.",
+  skills: [
+    {
+      group: "Languages",
+      items: ["Go", "C++", "Bash"],
+    },
+    {
+      group: "Architecture",
+      items: ["RESTful APIs", "Event-Driven (NATS)", "gRPC"],
+    },
+    {
+      group: "Cloud & Infra",
+      items: ["GCP", "Kubernetes", "Docker", "Talos Linux", "Flatcar"],
+    },
+    {
+      group: "Observability",
+      items: ["Prometheus", "Grafana", "Custom Exporters"],
+    },
+    {
+      group: "IaC & CI/CD",
+      items: ["Terraform", "Ansible", "Helm", "GitHub Actions", "ArgoCD"],
+    },
+    {
+      group: "Data",
+      items: ["PostgreSQL", "NATS", "BigQuery"],
+    },
+    {
+      group: "Security",
+      items: ["CrowdSec", "Bunkerweb", "iptables"],
+    },
+  ],
+  resumeUrl: "/resume/Resume_Masudur_Rahman.pdf",
   // Project filtering configuration (excluding open source - now has separate section)
   projectFilters: [
     { name: "All", filter: ProjectCategory.All },
@@ -214,32 +254,28 @@ export const siteConfig = {
       dateRange: "Jan 2024 - Present",
       bullets: [
         {
-          text: "Built a resilient Kubernetes foundation by deploying Talos Linux clusters and automating Flatcar OS lifecycles to ensure immutable, repeatable infrastructure.",
-          tools: ["Talos Linux", "Flatcar", "Kubernetes", "Terraform", "Ansible"]
+          text: "Deployed Talos Linux Kubernetes clusters and automated Flatcar OS lifecycle operations to build an immutable, repeatable cluster foundation.",
+          tools: ["Talos Linux", "Flatcar", "Kubernetes", "Terraform", "Ansible"],
         },
         {
-          text: "Balanced cluster workloads by introducing the Kubernetes Descheduler, which fixed node over-utilization and improved overall resource efficiency.",
-          tools: ["Kubernetes", "Descheduler", "Go", "Helm"]
+          text: "Set up Apache Airflow pipelines on Kubernetes to migrate high-volume on-premise financial data into GCP BigQuery for analytics.",
+          tools: ["Airflow", "Kubernetes", "Helm", "Postgres", "GCP BigQuery", "Ansible"],
         },
         {
-          text: "Streamlined data migrations by setting up Apache Airflow on Kubernetes, moving critical on-premise data to GCP BigQuery for better analytics and monitoring.",
-          tools: ["Airflow", "Helm", "Kubernetes", "Postgres", "GCP BigQuery", "Ansible"]
+          text: "Built custom Prometheus exporters and Grafana dashboards to improve observability and proactive monitoring across critical services (DNS, GitLab, Harbor).",
+          tools: ["Prometheus", "Grafana", "Exporters", "Kubernetes"],
         },
         {
-          text: "Improved GKE workload scheduling by refactoring node pool logic (taints/tolerations) and integrating NFS-backed storage for stateful services.",
-          tools: ["GKE", "Kubernetes", "NFS", "Terraform"]
+          text: "Resolved node over-utilization by introducing Kubernetes Descheduler to automate workload rebalancing and improve overall cluster efficiency.",
+          tools: ["Kubernetes", "Descheduler", "Helm"],
         },
         {
-          text: "Solved cross-site connectivity challenges by implementing Nginx Gateway and Squid proxy, enabling secure and observable traffic routing between distributed environments.",
-          tools: ["Nginx", "Squid", "Netbird", "Kubernetes"]
+          text: "Hardened stateful services and infrastructure using host-level firewall rules, NFS-backed storage, and a Bunkerweb + CrowdSec WAF stack.",
+          tools: ["iptables", "NFS", "Bunkerweb", "CrowdSec", "Linux", "Kubernetes"],
         },
         {
-          text: "Boosted system visibility by rolling out custom Grafana dashboards and Prometheus exporters for core infrastructure like DNS, GitLab, and Harbor.",
-          tools: ["Grafana", "Prometheus", "Exporters", "Linux"]
-        },
-        {
-          text: "Strengthened platform security by standardizing host-level firewall rules and deploying a WAF stack with Bunkerweb and CrowdSec.",
-          tools: ["iptables", "Bunkerweb", "CrowdSec", "Network Security"]
+          text: "Engineered secure cross-site DC–DR connectivity using Nginx Gateway and Squid proxy for controlled and observable traffic routing.",
+          tools: ["Nginx", "Squid", "Kubernetes", "Networking"],
         }
       ]
     },
@@ -249,15 +285,24 @@ export const siteConfig = {
       dateRange: "Jun 2023 - Dec 2023",
       bullets: [
         {
-          text: "Lead the design and maintenance of AppsCode API Server, a RESTful API for managing Kubernetes clusters and applications.",
-          tools: ["Go", "go-macaron", "Helm", "k8s"],
+          text: "Led the design and maintenance of AppsCode API Server, a RESTful API for managing Kubernetes clusters.",
+          tools: ["Go", "REST APIs", "Kubernetes", "Helm"],
         },
-        "Restructured the cluster import flow for AppsCode Console, improving the user experience and performance.",
-        "Implemented dynamic feature controller for managing different features in imported clusters, such as monitoring, security",
-        "Restructured the Licensing system for AppsCode products, automating the license issuance, validation and enforcement.",
         {
-          text: "Packaged AppsCode Console as a Service and made it ready for deployment in user k8s clusters (vendor-managed or self-managed) and through various DNS providers and Cloud Storage Services.",
-          tools: ["CloudDNS", "Cloudflare", "AzureDNS", "Route53", "GCS", "s3", "Azure Blob Storage", "Linode Object Storage"],
+          text: "Restructured the cluster import flow for AppsCode Console, improving user experience and performance.",
+          tools: ["Go", "Kubernetes", "Helm"],
+        },
+        {
+          text: "Implemented a dynamic feature controller for imported clusters (monitoring, security).",
+          tools: ["Go", "Kubernetes"],
+        },
+        {
+          text: "Restructured the licensing system to automate license issuance, validation, and enforcement.",
+          tools: ["Go", "Backend"],
+        },
+        {
+          text: "Packaged AppsCode Console as a Service, deployable through multiple DNS providers and cloud storage services.",
+          tools: ["Cloudflare", "Route53", "CloudDNS", "GCS", "S3"],
         },
       ],
     },
@@ -267,18 +312,29 @@ export const siteConfig = {
       dateRange: "Jan 2021 - Dec 2022",
       bullets: [
         {
-          text: "Designed and Maintained ByteBuilders API Server.",
-          tools: ["Go", "macaron web framework", "helm", "k8s"],
+          text: "Designed and maintained ByteBuilders API Server.",
+          tools: ["Go", "Kubernetes", "Helm"],
         },
-        "Added a support for importing Kubernetes Cluster [Managed, Public & Air Gaped] to ByteBuilders Dashboard.",
         {
-          text: "Implemented A Background Task Manager for long running tasks, log/exec features for Kubernetes pods/services and Invoice generation from users' usage data with the help of NATS.",
-          tools: ["Go", "k8s", "NATS"],
+          text: "Added support for importing Kubernetes clusters (Managed, Public & Air Gapped) into the ByteBuilders dashboard.",
+          tools: ["Go", "Kubernetes"],
         },
-        "Developed a Prometheus Proxy Server for Grafana datasource.",
-        "Added CI/CD pipelines for projects in Github Actions.",
-        "Involved in Deployment & Maintenance of ByteBuilders Production Server.",
-        "Guided and managed team-members.",
+        {
+          text: "Implemented a background task manager for long-running operations, pod log/exec features, and invoice generation via NATS.",
+          tools: ["Go", "Kubernetes", "NATS"],
+        },
+        {
+          text: "Developed a Prometheus proxy server for Grafana datasource access.",
+          tools: ["Go", "Prometheus", "Grafana"],
+        },
+        {
+          text: "Added CI/CD pipelines across projects in GitHub Actions.",
+          tools: ["GitHub Actions", "CI/CD"],
+        },
+        {
+          text: "Ran production deployments and day-to-day operations; mentored junior engineers.",
+          tools: ["Kubernetes", "Helm", "Operations"],
+        },
       ],
     },
     {
@@ -287,12 +343,17 @@ export const siteConfig = {
       dateRange: "Nov 2018 - Dec 2020",
       bullets: [
         {
-          text: "Implemented a feature in [Pharmer](https://github.com/pharmer/pharmer) project to support Kubernetes Cluster Provisioning in Google Compute Engine using Cluster API.",
-          tools: ["Go", "Shell scripts"],
+          text: "Added GCE support to Pharmer using Cluster API for Kubernetes cluster provisioning.",
+          tools: ["Go", "Kubernetes", "Cluster API", "GCE"],
         },
-        "Contributed in ByteBuilders API Server integrating various features.",
-        "Integrated Stripe Payment APIs including product, plan, payment and invoice apis.",
-        "Developed a Kubernetes Controller for Provisioning and Managing Grafana Dashboards and Datasources.",
+        {
+          text: "Integrated Stripe payment APIs (products, plans, payments, invoices).",
+          tools: ["Go", "Stripe", "Backend"],
+        },
+        {
+          text: "Built a Kubernetes controller for provisioning and managing Grafana dashboards and datasources.",
+          tools: ["Go", "Kubernetes", "Grafana"],
+        },
       ],
     },
   ],
