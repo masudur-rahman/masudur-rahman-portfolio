@@ -282,7 +282,7 @@ export const siteConfig = {
     {
       company: "[AppsCode Inc](https://appscode.com).",
       title: "Lead Software Engineer",
-      dateRange: "Jun 2023 - Dec 2023",
+      dateRange: "Jan 2023 - Dec 2023",
       bullets: [
         {
           text: "Led the design and maintenance of AppsCode API Server, a RESTful API for managing Kubernetes clusters.",
