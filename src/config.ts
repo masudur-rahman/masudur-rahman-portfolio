@@ -101,7 +101,7 @@ export const siteConfig = {
     },
   ],
   aboutMe:
-    "Senior Software Engineer with **7.5+ years** of experience in Go backend development and Kubernetes infrastructure.\n\nAt **Pathao Ltd (Fintech Engineering)**, I build and operate production-grade platform infrastructure — spanning immutable **Talos Linux** clusters, **GitOps** pipelines, custom observability stacks, and WAF security layers.\n\nPreviously at **AppsCode Inc. (5 years)**, I designed and maintained multi-tenant Kubernetes management platforms, led teams on cloud-native SaaS products, and contributed to open-source projects including **Gitea**, **Cluster API GCP**, **Grafana SDK**, and **NATS**.\n\n- **CKA certified**, currently working toward **CKS**.\n- Competitive programming background — ICPC Dhaka Regional finalist, Codeforces max rating **1702**, **1400+** problems solved.",
+    "Senior Software Engineer with **7.5+ years** of experience in Go backend development and Kubernetes infrastructure.\n\nAt **Pathao Ltd (Fintech Engineering)**, I build and operate production-grade platform infrastructure — spanning immutable **Talos Linux** clusters, **GitOps** pipelines, custom observability stacks, and WAF security layers.\n\nPreviously at **AppsCode Inc. (5 years)**, I designed and maintained multi-tenant Kubernetes management platforms, led teams on cloud-native SaaS products, and contributed to open-source projects including **Gitea**, **Cluster API GCP**, **Grafana SDK**, and **NATS**.\n\n- **CKA**, **CKS** certified. Competitive programming background — ICPC Dhaka Regional finalist, Codeforces max rating **1702**, **1400+** problems solved.",
   skills: [
     {
       group: "Languages",
