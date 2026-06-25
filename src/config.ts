@@ -75,7 +75,7 @@ export type Certification = {
 export const siteConfig = {
   name: "Masudur Rahman",
   title:
-    "Senior Software Engineer (DevOps) · Pathao Ltd (Fintech Engineering) | Go · Kubernetes · Observability · CKA Certified",
+    "Senior Software Engineer II (DevOps) · Pathao Ltd (Fintech Engineering) | Go · Kubernetes · Observability · CKA | CKS",
   description: "Portfolio website of Masudur Rahman",
   accentColor: "#1d4ed8",
   social: [
@@ -101,7 +101,7 @@ export const siteConfig = {
     },
   ],
   aboutMe:
-    "Senior Software Engineer with **7+ years** of experience in Go backend development and Kubernetes infrastructure.\n\nAt **Pathao Ltd (Fintech Engineering)**, I build and operate production-grade platform infrastructure — spanning immutable **Talos Linux** clusters, **GitOps** pipelines, custom observability stacks, and WAF security layers.\n\nPreviously at **AppsCode Inc. (5 years)**, I designed and maintained multi-tenant Kubernetes management platforms, led teams on cloud-native SaaS products, and contributed to open-source projects including **Gitea**, **Cluster API GCP**, **Grafana SDK**, and **NATS**.\n\n- **CKA certified**, currently working toward **CKS**.\n- Competitive programming background — ICPC Dhaka Regional finalist, Codeforces max rating **1702**, **1400+** problems solved.",
+    "Senior Software Engineer with **7.5+ years** of experience in Go backend development and Kubernetes infrastructure.\n\nAt **Pathao Ltd (Fintech Engineering)**, I build and operate production-grade platform infrastructure — spanning immutable **Talos Linux** clusters, **GitOps** pipelines, custom observability stacks, and WAF security layers.\n\nPreviously at **AppsCode Inc. (5 years)**, I designed and maintained multi-tenant Kubernetes management platforms, led teams on cloud-native SaaS products, and contributed to open-source projects including **Gitea**, **Cluster API GCP**, **Grafana SDK**, and **NATS**.\n\n- **CKA certified**, currently working toward **CKS**.\n- Competitive programming background — ICPC Dhaka Regional finalist, Codeforces max rating **1702**, **1400+** problems solved.",
   skills: [
     {
       group: "Languages",
@@ -250,8 +250,27 @@ export const siteConfig = {
   experience: [
     {
       company: "[Pathao Ltd](https://pathao.com)., Fintech Engineering",
-      title: "Senior Software Engineer (DevOps)",
-      dateRange: "Jan 2024 - Present",
+      title: "Senior Software Engineer II (DevOps)",
+      dateRange: "Jan 2026 - Present",
+      bullets: [
+        {
+          text: "Deployed Vaultwarden for centralized credential management and automated root password rotation across infrastructure services.",
+          tools: ["Ansible"]
+        },
+        {
+          text: "Set up Harbor proxy cache mirrors via Ansible and configured Talos to route image pulls through them via Terraform.",
+          tools: ["Harbor", "Talos"]
+        },
+        {
+          text: "Automated Talos and Flatcar OS upgrade and rollback lifecycle across the cluster fleet.",
+          tools: ["Talos", "Flatcar", "Ansible", "Terraform"]
+        }
+      ]
+    },
+    {
+      company: "[Pathao Ltd](https://pathao.com)., Fintech Engineering",
+      title: "Senior Software Engineer I (DevOps)",
+      dateRange: "Jan 2024 - Dec 2025",
       bullets: [
         {
           text: "Deployed Talos Linux Kubernetes clusters and automated Flatcar OS lifecycle operations to build an immutable, repeatable cluster foundation.",
@@ -274,7 +293,7 @@ export const siteConfig = {
           tools: ["iptables", "NFS", "Bunkerweb", "CrowdSec", "Linux", "Kubernetes"],
         },
         {
-          text: "Engineered secure cross-site DC–DR connectivity using Nginx Gateway and Squid proxy for controlled and observable traffic routing.",
+          text: "Engineered secure cross-site DC-DR connectivity using Nginx Gateway and Squid proxy for controlled and observable traffic routing.",
           tools: ["Nginx", "Squid", "Kubernetes", "Networking"],
         }
       ]
@@ -396,6 +415,7 @@ export const siteConfig = {
   ],
   achievements: [
     "[Certified Kubernetes Administrator](https://www.credly.com/badges/351fbffa-af1e-4803-8e60-8fd52c617606/public_url) - CNCF.",
+    "[CKS: Certified Kubernetes Security Specialist](https://www.credly.com/badges/5a9166da-2385-410d-a8df-1e0bcc782d97/public_url) - CNCF.",
     "Rank 27 in ICPC Dhaka Regional Preliminary Contest 2017 (Among 1400+ teams).",
     "Rank 31 in CUET National Collegiate Programming Contest, 2017.",
     "Rank 46 in ACM ICPC Dhaka Regional, 2017.",
@@ -410,6 +430,12 @@ export const siteConfig = {
       title: "CKA Certificate",
       description: "CKA Certificate.",
       date: "2025-10-18"
+    },
+    {
+      image: "/images/gallery/cks.png",
+      title: "CKS Certificate",
+      description: "CKS Certificate.",
+      date: "2026-06-13"
     },
     {
       image: "/images/gallery/icpc.jpg",
@@ -433,6 +459,14 @@ export const siteConfig = {
       expirationDate: "Oct 2027",
       credentialId: "LF-wtyegudkav",
       credentialUrl: "https://www.credly.com/badges/351fbffa-af1e-4803-8e60-8fd52c617606/public_url",
+    },
+    {
+      name: "CKS: Certified Kubernetes Security Specialist",
+      issuer: "The Linux Foundation",
+      issueDate: "June 2026",
+      expirationDate: "June 2028",
+      credentialId: "LF-6c82qty0px",
+      credentialUrl: "https://www.credly.com/badges/5a9166da-2385-410d-a8df-1e0bcc782d97/public_url",
     }
   ]
 };
