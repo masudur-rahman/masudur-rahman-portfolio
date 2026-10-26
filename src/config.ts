@@ -113,7 +113,7 @@ export const siteConfig = {
     },
     {
       group: "Cloud & Infra",
-      items: ["GCP", "Kubernetes", "Docker", "Talos Linux", "Flatcar"],
+      items: ["GCP", "GKE", "AWS", "Kubernetes", "Docker", "Linux", "Talos Linux", "Flatcar", "vSphere", "Cloudflare"],
     },
     {
       group: "Observability",
@@ -125,11 +125,15 @@ export const siteConfig = {
     },
     {
       group: "Data",
-      items: ["PostgreSQL", "NATS", "BigQuery"],
+      items: ["PostgreSQL", "BigQuery"],
     },
     {
       group: "Security",
       items: ["CrowdSec", "Bunkerweb", "iptables"],
+    },
+    {
+      group: "Networking",
+      items: ["Cilium", "Kong", "nginx", "Squid"],
     },
   ],
   resumeUrl: "/resume/Resume_Masudur_Rahman.pdf",
@@ -149,6 +153,15 @@ export const siteConfig = {
         "A Telegram bot built with Go to manage and track personal finances. Parses natural language inputs to record expenses, income, transfers, and loans directly from chat. Supports multi-account management (cash, bank, etc.), categorized budgeting summaries, and automated PDF reports. Designed for self-hosting with a simple, automation-friendly workflow.",
       link: "https://github.com/masudur-rahman/expense-tracker-bot" as URL,
       skills: ["Go", "Telegram API"],
+      category: ProjectCategory.Hobby,
+      role: "Owner",
+    },
+    {
+      name: "PaySchedule Operator",
+      description:
+        "Kubernetes operator in Go, built with kubebuilder and controller-runtime. Reconciles a PaySchedule custom resource into an owned CronJob, keeps it in sync with spec changes, and reports the last schedule time in status. RBAC is scoped via kubebuilder markers and the controller is covered by envtest tests.",
+      link: "https://github.com/masudur-rahman/payschedule-operator" as URL,
+      skills: ["Go", "Kubernetes", "kubebuilder", "CRD"],
       category: ProjectCategory.Hobby,
       role: "Owner",
     },
@@ -254,18 +267,30 @@ export const siteConfig = {
       dateRange: "Jan 2026 - Present",
       bullets: [
         {
+          text: "Planned and rolled out migrations from Debian to Flatcar (VMs) and Rancher to Talos Linux (clusters), with vSphere anti-affinity rules spreading VMs across ESXi hosts.",
+          tools: ["Flatcar", "Talos Linux", "vSphere", "Kubernetes"],
+        },
+        {
+          text: "Managed the network path from edge to cluster for a payments platform with 500K+ registered users: nginx gateway, Kong ingress, Cilium networking, and Squid for egress.",
+          tools: ["nginx", "Kong", "Cilium", "Squid"],
+        },
+        {
+          text: "Automated Talos and Flatcar OS upgrade and rollback lifecycle across the cluster fleet, with staged Talos version progression.",
+          tools: ["Talos", "Flatcar", "Ansible", "Terraform"],
+        },
+        {
+          text: "Built a Terraform module to manage Cloudflare DNS, WAF, and Zero Trust access.",
+          tools: ["Terraform", "Cloudflare"],
+        },
+        {
+          text: "Set up Harbor proxy cache mirrors with retention policies via Ansible, and routed Talos image pulls through them via Terraform.",
+          tools: ["Harbor", "Talos", "Ansible", "Terraform"],
+        },
+        {
           text: "Deployed Vaultwarden for centralized credential management and automated root password rotation across infrastructure services.",
-          tools: ["Ansible"]
-        },
-        {
-          text: "Set up Harbor proxy cache mirrors via Ansible and configured Talos to route image pulls through them via Terraform.",
-          tools: ["Harbor", "Talos"]
-        },
-        {
-          text: "Automated Talos and Flatcar OS upgrade and rollback lifecycle across the cluster fleet.",
-          tools: ["Talos", "Flatcar", "Ansible", "Terraform"]
+          tools: ["Vaultwarden", "Ansible"],
         }
-      ]
+      ],
     },
     {
       company: "[Pathao Ltd](https://pathao.com)., Fintech Engineering",
@@ -273,7 +298,7 @@ export const siteConfig = {
       dateRange: "Jan 2024 - Dec 2025",
       bullets: [
         {
-          text: "Deployed Talos Linux Kubernetes clusters and automated Flatcar OS lifecycle operations to build an immutable, repeatable cluster foundation.",
+          text: "Deployed Talos Linux clusters and Flatcar OS as an immutable Kubernetes foundation.",
           tools: ["Talos Linux", "Flatcar", "Kubernetes", "Terraform", "Ansible"],
         },
         {
@@ -281,22 +306,18 @@ export const siteConfig = {
           tools: ["Airflow", "Kubernetes", "Helm", "Postgres", "GCP BigQuery", "Ansible"],
         },
         {
-          text: "Built custom Prometheus exporters and Grafana dashboards to improve observability and proactive monitoring across critical services (DNS, GitLab, Harbor).",
+          text: "Built custom Prometheus exporters and Grafana dashboards for observability across DNS, GitLab, Harbor, and custom nginx upstream metrics.",
           tools: ["Prometheus", "Grafana", "Exporters", "Kubernetes"],
         },
         {
-          text: "Resolved node over-utilization by introducing Kubernetes Descheduler to automate workload rebalancing and improve overall cluster efficiency.",
+          text: "Resolved node over-utilization by introducing the Kubernetes Descheduler to automate workload rebalancing, improving overall cluster efficiency.",
           tools: ["Kubernetes", "Descheduler", "Helm"],
         },
         {
-          text: "Hardened stateful services and infrastructure using host-level firewall rules, NFS-backed storage, and a Bunkerweb + CrowdSec WAF stack.",
+          text: "Hardened cloud infrastructure using host-level and Talos ingress firewall rules, NFS-backed storage, and a Bunkerweb + CrowdSec WAF stack.",
           tools: ["iptables", "NFS", "Bunkerweb", "CrowdSec", "Linux", "Kubernetes"],
-        },
-        {
-          text: "Engineered secure cross-site DC-DR connectivity using Nginx Gateway and Squid proxy for controlled and observable traffic routing.",
-          tools: ["Nginx", "Squid", "Kubernetes", "Networking"],
         }
-      ]
+      ],
     },
     {
       company: "[AppsCode Inc](https://appscode.com).",
@@ -308,21 +329,21 @@ export const siteConfig = {
           tools: ["Go", "REST APIs", "Kubernetes", "Helm"],
         },
         {
-          text: "Restructured the cluster import flow for AppsCode Console, improving user experience and performance.",
+          text: "Restructured AppsCode Console's cluster import flow, improving UX and performance.",
           tools: ["Go", "Kubernetes", "Helm"],
         },
         {
-          text: "Implemented a dynamic feature controller for imported clusters (monitoring, security).",
+          text: "Created a dynamic feature controller for imported clusters (monitoring, security).",
           tools: ["Go", "Kubernetes"],
         },
         {
-          text: "Restructured the licensing system to automate license issuance, validation, and enforcement.",
+          text: "Restructured the licensing system, automating issuance, validation, and enforcement.",
           tools: ["Go", "Backend"],
         },
         {
-          text: "Packaged AppsCode Console as a Service, deployable through multiple DNS providers and cloud storage services.",
+          text: "Packaged AppsCode Console as a Service, deployable through various DNS providers and cloud storage services.",
           tools: ["Cloudflare", "Route53", "CloudDNS", "GCS", "S3"],
-        },
+        }
       ],
     },
     {
@@ -331,29 +352,25 @@ export const siteConfig = {
       dateRange: "Jan 2021 - Dec 2022",
       bullets: [
         {
-          text: "Designed and maintained ByteBuilders API Server.",
+          text: "Designed and maintained ByteBuilders API Server (Go, macaron, Helm, K8s).",
           tools: ["Go", "Kubernetes", "Helm"],
         },
         {
-          text: "Added support for importing Kubernetes clusters (Managed, Public & Air Gapped) into the ByteBuilders dashboard.",
-          tools: ["Go", "Kubernetes"],
+          text: "Added support for importing Managed (EKS, GKE, AKS, DOKS), Public, & Air-Gapped clusters into ByteBuilders.",
+          tools: ["Go", "Kubernetes", "EKS", "GKE", "AKS", "DOKS"],
         },
         {
-          text: "Implemented a background task manager for long-running operations, pod log/exec features, and invoice generation via NATS.",
+          text: "Engineered a background task manager for long-running tasks, log/exec for K8s pods and services, and invoice generation via NATS.",
           tools: ["Go", "Kubernetes", "NATS"],
         },
         {
-          text: "Developed a Prometheus proxy server for Grafana datasource access.",
-          tools: ["Go", "Prometheus", "Grafana"],
+          text: "Developed a Prometheus proxy server for Grafana datasources. Added CI/CD pipelines in GitHub Actions.",
+          tools: ["Go", "Prometheus", "Grafana", "GitHub Actions"],
         },
         {
-          text: "Added CI/CD pipelines across projects in GitHub Actions.",
-          tools: ["GitHub Actions", "CI/CD"],
-        },
-        {
-          text: "Ran production deployments and day-to-day operations; mentored junior engineers.",
+          text: "Ran production deployments and day-to-day ops. Mentored junior engineers.",
           tools: ["Kubernetes", "Helm", "Operations"],
-        },
+        }
       ],
     },
     {
@@ -362,17 +379,17 @@ export const siteConfig = {
       dateRange: "Nov 2018 - Dec 2020",
       bullets: [
         {
-          text: "Added GCE support to Pharmer using Cluster API for Kubernetes cluster provisioning.",
+          text: "Added GCE support to Pharmer using Cluster API for K8s cluster provisioning.",
           tools: ["Go", "Kubernetes", "Cluster API", "GCE"],
         },
         {
-          text: "Integrated Stripe payment APIs (products, plans, payments, invoices).",
+          text: "Integrated Stripe payment APIs — products, plans, payments, and invoices.",
           tools: ["Go", "Stripe", "Backend"],
         },
         {
-          text: "Built a Kubernetes controller for provisioning and managing Grafana dashboards and datasources.",
+          text: "Built a Kubernetes controller for provisioning Grafana dashboards and datasources.",
           tools: ["Go", "Kubernetes", "Grafana"],
-        },
+        }
       ],
     },
   ],
